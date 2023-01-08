@@ -12,6 +12,11 @@ width: 1200px;
   /*grid-gap: 10px;*/
 }
 
+.app-wrapper-content {
+  grid-area: c;
+  background-color: #00c4ff;
+}
+
 
 
 
