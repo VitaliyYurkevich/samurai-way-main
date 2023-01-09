@@ -6,7 +6,7 @@ type DialogsType = {
     name: string
     id: number
 }
-let a
+
 type MessageType = {
     message: string
 }
