@@ -4,6 +4,13 @@ import Post from "./Post/Post";
 
 
 function MyPosts() {
+    let postData = [
+        {id: 1, message: 'Hi, how are you?', likesCount: 2 },
+        {id: 1, message: 'Its the first post', likesCount: 2 },
+        {id: 1, message: 'Like dont see you', likesCount: 2 }
+    ]
+
+
     return (
         <div className={classes.postsBlock}>
             <h3>My posts</h3>
