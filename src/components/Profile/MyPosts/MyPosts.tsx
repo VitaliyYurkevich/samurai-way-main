@@ -4,6 +4,7 @@ import Post from "./Post/Post";
 import {message} from "antd";
 
 
+
 function MyPosts() {
     let post = [
         {id: 1, message: 'Hi, how are you?', likesCount: 2},
