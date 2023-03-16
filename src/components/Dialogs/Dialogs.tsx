@@ -33,7 +33,7 @@ function Message(props: MessageType) {
 
 function Dialogs() {
 
-    let dialogsData = [
+    let dialogs = [
         {id: 1, name: 'Dimych'},
         {id: 2, name: 'Andrey'},
         {id: 3, name: 'Sveta'},
@@ -42,7 +42,7 @@ function Dialogs() {
         {id: 6, name: 'Valera'},
     ]
 
-    let messegesData = [
+    let messages = [
         {id: 1, message: 'Hi'},
         {id: 2, message: 'BlaBla'},
         {id: 3, message: 'Hello'},
@@ -51,21 +51,16 @@ function Dialogs() {
         {id: 6, message: 'Valera'},
     ]
 
+    let dialogsElements = dialogs.map(d => <DialogsItem name={d.name} id={d.id}/>)
+    let messagesElements = messages.map(m => <Message message={m.message}/>)
+
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
-                {dialogsData.map((user) => {
-                    return (
-                        <DialogsItem name={user.name} id={user.id}/>
-                    )
-                })}
+                {dialogsElements}
             </div>
             <div className={classes.messages}>
-                {messegesData.map((m)=>{
-                    return(
-                      <Message message={m.message}/>
-                    )
-                })}
+                {messagesElements}
             </div>
         </div>
 

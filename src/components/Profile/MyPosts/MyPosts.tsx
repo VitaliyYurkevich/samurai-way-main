@@ -5,12 +5,13 @@ import {message} from "antd";
 
 
 function MyPosts() {
-    let postData = [
-        {id: 1, message: 'Hi, how are you?', likesCount: 2 },
-        {id: 2, message: 'Its the first post', likesCount: 2 },
-        {id: 3, message: 'Like dont see you', likesCount: 2 }
+    let post = [
+        {id: 1, message: 'Hi, how are you?', likesCount: 2},
+        {id: 2, message: 'Its the first post', likesCount: 2},
+        {id: 3, message: 'Like dont see you', likesCount: 2}
     ]
 
+    let postElements = post.map(post => <Post message={post.message} likesCount={post.likesCount}></Post>)
 
     return (
         <div className={classes.postsBlock}>
@@ -23,13 +24,8 @@ function MyPosts() {
                     <div>
                         <button>Add post</button>
                     </div>
-
                     <div className={classes.posts}>
-                        {postData.map((post)=>{
-                            return(
-                               <div>{ post.message} like {post.likesCount }</div>
-                            )
-                        })}
+                        {postElements}
                     </div>
                 </div>
             </div>

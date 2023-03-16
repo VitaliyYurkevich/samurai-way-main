@@ -10,6 +10,9 @@ type MessageType = {
 
 
 function Post(props: MessageType) {
+
+
+
     return (
         <div>
             <div className={classes.item}>
