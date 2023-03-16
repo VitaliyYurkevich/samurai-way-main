@@ -16,17 +16,17 @@ type DialogsDataPropsType = {
     name: string
 }
 
-function DialogsItem(props:DialogsType) {
+function DialogsItem(props: DialogsType) {
     let path = '/dialogs/' + props.id
-    return(
+    return (
         <div className={classes.dialog + ' ' + classes.active}>
             <NavLink to={path}>{props.name}</NavLink>
         </div>
     )
 }
 
-function Message(props:MessageType){
-    return(
+function Message(props: MessageType) {
+    return (
         <div className={classes.message}>{props.message}</div>
     )
 }
@@ -43,28 +43,29 @@ function Dialogs() {
     ]
 
     let messegesData = [
-        {id: 1, name: 'Hi'},
-        {id: 2, name: 'BlaBla'},
-        {id: 3, name: 'Hello'},
-        {id: 4, name: 'WTF'},
-        {id: 5, name: 'Whats up'},
-        {id: 6, name: 'Valera'},
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'BlaBla'},
+        {id: 3, message: 'Hello'},
+        {id: 4, message: 'WTF'},
+        {id: 5, message: 'Whats up'},
+        {id: 6, message: 'Valera'},
     ]
 
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
-                {dialogsData.map((user)=>{
-                    return(
+                {dialogsData.map((user) => {
+                    return (
                         <DialogsItem name={user.name} id={user.id}/>
                     )
                 })}
             </div>
             <div className={classes.messages}>
-                <Message message={'Blablabla'}/>
-                <Message message={'Blablabla'}/>
-                <Message message={'Blablabla'}/>
-                <Message message={'Blablabla'}/>
+                {messegesData.map((m)=>{
+                    return(
+                      <Message message={m.message}/>
+                    )
+                })}
             </div>
         </div>
 
