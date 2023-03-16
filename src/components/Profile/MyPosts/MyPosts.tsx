@@ -2,17 +2,18 @@ import React from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
 import {message} from "antd";
+import {postPropsType} from "../../../index";
+
+
+type MyPostsPropsType = {
+    post: postPropsType[]
+}
+
+function MyPosts(props: MyPostsPropsType) {
 
 
 
-function MyPosts() {
-    let post = [
-        {id: 1, message: 'Hi, how are you?', likesCount: 2},
-        {id: 2, message: 'Its the first post', likesCount: 2},
-        {id: 3, message: 'Like dont see you', likesCount: 2}
-    ]
-
-    let postElements = post.map(post => <Post message={post.message} likesCount={post.likesCount}></Post>)
+    let postElements = props.post.map(post => <Post message={post.message} likesCount={post.likesCount}></Post>)
 
     return (
         <div className={classes.postsBlock}>
