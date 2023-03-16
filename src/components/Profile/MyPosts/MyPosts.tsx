@@ -1,13 +1,14 @@
 import React from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
+import {message} from "antd";
 
 
 function MyPosts() {
     let postData = [
         {id: 1, message: 'Hi, how are you?', likesCount: 2 },
-        {id: 1, message: 'Its the first post', likesCount: 2 },
-        {id: 1, message: 'Like dont see you', likesCount: 2 }
+        {id: 2, message: 'Its the first post', likesCount: 2 },
+        {id: 3, message: 'Like dont see you', likesCount: 2 }
     ]
 
 
@@ -24,9 +25,11 @@ function MyPosts() {
                     </div>
 
                     <div className={classes.posts}>
-                        <Post message='Hi, how are you?' likesCount={2}/>
-                        <Post message='Its my first post' likesCount={0}/>
-
+                        {postData.map((post)=>{
+                            return(
+                               <div>{ post.message} like {post.likesCount }</div>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
