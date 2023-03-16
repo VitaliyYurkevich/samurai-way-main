@@ -2,20 +2,8 @@ import React from 'react';
 import classes from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 import DialogsItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
 
-
-
-type MessageType = {
-    message: string
-}
-
-
-
-function Message(props: MessageType) {
-    return (
-        <div className={classes.message}>{props.message}</div>
-    )
-}
 
 function Dialogs() {
 
