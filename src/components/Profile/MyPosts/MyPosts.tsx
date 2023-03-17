@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
 import {message} from "antd";
@@ -24,7 +24,8 @@ function MyPosts(props: MyPostsPropsType) {
                         <textarea></textarea>
                     </div>
                     <div>
-                        <button>Add post</button>
+                        <button onClick={() => {alert('aasda')}}>Add post
+                        </button>
                     </div>
                     <div className={classes.posts}>
                         {postElements}

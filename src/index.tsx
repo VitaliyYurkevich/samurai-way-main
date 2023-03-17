@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -19,11 +19,21 @@ export type postPropsType = {
     likesCount: number
 }
 
+
 export let post = [
     {id: 1, message: 'Hi, how are you?', likesCount: 2},
     {id: 2, message: 'Its the first post', likesCount: 2},
     {id: 3, message: 'Like dont see you', likesCount: 2}
 ]
+
+/*
+export let AddPost = (message: string) => {
+    let posts = {id: 4, message: message, likesCount: 0}
+    let NewPost = [...post, posts]
+    setPost(NewPost)
+}
+
+*/
 
 export let dialogs = [
     {id: 1, name: 'Dimych'},
@@ -43,8 +53,9 @@ export let messages = [
     {id: 6, message: 'Valera'},
 ]
 
+
 ReactDOM.render(
-    <App />,
-  document.getElementById('root')
+    <App/>,
+    document.getElementById('root')
 );
 
