@@ -17,32 +17,31 @@ function MyPosts(props: MyPostsPropsType) {
     let postElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}></Post>)
 
     const addPost = () => {
-        let text = newPostElement.current?.value
-        if(text){
-            props.addPost(text)
+        if (newPostElement.current?.value) {
+            props.addPost(newPostElement.current?.value)
+            newPostElement.current.value = ''
         }
-
     }
-
-    return (
-        <div className={classes.postsBlock}>
-            <h3>My posts</h3>
-            <div>
+        return (
+            <div className={classes.postsBlock}>
+                <h3>My posts</h3>
                 <div>
                     <div>
-                        <textarea ref={newPostElement}></textarea>
-                    </div>
-                    <div>
-                        <button onClick={addPost}>Add post
-                        </button>
-                    </div>
-                    <div className={classes.posts}>
-                        {postElements}
+                        <div>
+                            <textarea ref={newPostElement}></textarea>
+                        </div>
+                        <div>
+                            <button onClick={addPost}>Add post
+                            </button>
+                        </div>
+                        <div className={classes.posts}>
+                            {postElements}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    )
-}
+        )
+    }
+
 
 export default MyPosts
