@@ -1,9 +1,8 @@
 import React from 'react';
 import classes from './Dialogs.module.css'
-import {NavLink} from "react-router-dom";
 import DialogsItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {dialogs, dialogsPropsType, messages, messagesPropsType} from "../../index";
+import {dialogsPropsType, messagesPropsType} from "../../index";
 
 
 
