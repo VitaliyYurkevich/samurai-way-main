@@ -6,16 +6,23 @@ import {postPropsType, profilePagePropsType, statePropsType} from "../../../redu
 
 
 type MyPostsPropsType = {
-    post: postPropsType[]
+    posts: postPropsType[]
+    addPost: (postMessage: string) => void
 }
 
-function MyPosts(props: profilePagePropsType) {
+function MyPosts(props: MyPostsPropsType) {
 
     let newPostElement: RefObject<HTMLTextAreaElement> = React.createRef()
 
     let postElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}></Post>)
 
-    const addPost = () => {alert('aasda')}
+    const addPost = () => {
+        let text = newPostElement.current?.value
+        if(text){
+            props.addPost(text)
+        }
+
+    }
 
     return (
         <div className={classes.postsBlock}>
