@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {RefObject, useState} from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
 import {postPropsType, profilePagePropsType, statePropsType} from "../../../redux/state";
@@ -11,6 +11,8 @@ type MyPostsPropsType = {
 
 function MyPosts(props: profilePagePropsType) {
 
+    let newPostElement: RefObject<HTMLTextAreaElement> = React.createRef()
+
     let postElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}></Post>)
 
     const addPost = () => {alert('aasda')}
@@ -21,7 +23,7 @@ function MyPosts(props: profilePagePropsType) {
             <div>
                 <div>
                     <div>
-                        <textarea></textarea>
+                        <textarea ref={newPostElement}></textarea>
                     </div>
                     <div>
                         <button onClick={addPost}>Add post
