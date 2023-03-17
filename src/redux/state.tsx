@@ -54,6 +54,7 @@ export let state: statePropsType = {
             {id: 5, message: 'Whats up'},
             {id: 6, message: 'Valera'},
         ]
-    }
+    },
+
 }
 

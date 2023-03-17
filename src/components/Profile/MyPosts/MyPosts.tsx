@@ -11,9 +11,9 @@ type MyPostsPropsType = {
 
 function MyPosts(props: profilePagePropsType) {
 
-
-
     let postElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}></Post>)
+
+    const addPost = () => {alert('aasda')}
 
     return (
         <div className={classes.postsBlock}>
@@ -24,7 +24,7 @@ function MyPosts(props: profilePagePropsType) {
                         <textarea></textarea>
                     </div>
                     <div>
-                        <button onClick={() => {alert('aasda')}}>Add post
+                        <button onClick={addPost}>Add post
                         </button>
                     </div>
                     <div className={classes.posts}>
