@@ -6,6 +6,7 @@ type DialogsDataPropsType = {
     id: number
     name: string
 }
+
 type DialogsType = {
     name: string
     id: number
