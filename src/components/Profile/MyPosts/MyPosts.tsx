@@ -22,13 +22,19 @@ function MyPosts(props: MyPostsPropsType) {
             newPostElement.current.value = ''
         }
     }
+
+    const onPostChange = () => {
+
+    }
+
+
         return (
             <div className={classes.postsBlock}>
                 <h3>My posts</h3>
                 <div>
                     <div>
                         <div>
-                            <textarea ref={newPostElement}></textarea>
+                            <textarea ref={newPostElement} value={213} onChange={onPostChange}/>
                         </div>
                         <div>
                             <button onClick={addPost}>Add post
