@@ -10,7 +10,7 @@ import {statePropsType} from "./redux/state";
 export let rerenderEntireTree = (state: statePropsType) => {
     ReactDOM.render(
         <BrowserRouter>
-            <App />
+            <App/>
         </BrowserRouter>, document.getElementById('root')
     )
 }
