@@ -18,6 +18,7 @@ export type postPropsType = {
 
 export type profilePagePropsType = {
     posts: postPropsType[]
+    newPostText: string
 }
 
 export type messagePagePropsType = {
@@ -38,6 +39,7 @@ export let state: statePropsType = {
             {id: 2, message: 'Its the first post', likesCount: 2},
             {id: 3, message: 'Like dont see you', likesCount: 2}
         ],
+        newPostText: 'Hello'
     },
     messagesPage: {
         dialogs: [
