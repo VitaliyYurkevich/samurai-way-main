@@ -5,14 +5,15 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {addPost, state} from "../../redux/state";
 
 
-
-
 function Profile() {
 
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts addPost={addPost} posts={state.profilePage.posts}/>
+            <MyPosts
+                newPostText={state.profilePage.newPostText}
+                addPost={addPost}
+                posts={state.profilePage.posts}/>
         </div>
     )
 }

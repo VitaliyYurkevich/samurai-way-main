@@ -8,6 +8,7 @@ import {postPropsType, profilePagePropsType, statePropsType} from "../../../redu
 type MyPostsPropsType = {
     posts: postPropsType[]
     addPost: (postMessage: string) => void
+    newPostText: string
 }
 
 function MyPosts(props: MyPostsPropsType) {
@@ -34,7 +35,7 @@ function MyPosts(props: MyPostsPropsType) {
                 <div>
                     <div>
                         <div>
-                            <textarea ref={newPostElement} value={213} onChange={onPostChange}/>
+                            <textarea ref={newPostElement} value={213} onChange ={props.newPostText}/>
                         </div>
                         <div>
                             <button onClick={addPost}>Add post
