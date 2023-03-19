@@ -39,7 +39,7 @@ export let state: statePropsType = {
             {id: 2, message: 'Its the first post', likesCount: 2},
             {id: 3, message: 'Like dont see you', likesCount: 2}
         ],
-        newPostText: 'Hello'
+        newPostText: ''
     },
     messagesPage: {
         dialogs: [
