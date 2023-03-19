@@ -1,7 +1,7 @@
-import React, {RefObject, useState} from "react";
+import React, {ChangeEvent, RefObject, useState} from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
-import {postPropsType, profilePagePropsType, statePropsType} from "../../../redux/state";
+import {postPropsType, profilePagePropsType, statePropsType, updateNewPostText} from "../../../redux/state";
 
 
 
@@ -9,6 +9,7 @@ type MyPostsPropsType = {
     posts: postPropsType[]
     addPost: (postMessage: string) => void
     newPostText: string
+    updateNewPostText: (newText: string) => void
 }
 
 function MyPosts(props: MyPostsPropsType) {
@@ -20,12 +21,12 @@ function MyPosts(props: MyPostsPropsType) {
     const addPost = () => {
         if (newPostElement.current?.value) {
             props.addPost(newPostElement.current?.value)
-            newPostElement.current.value = ''
+            /*newPostElement.current.value = ''*/
         }
     }
 
-    const onPostChange = () => {
-
+    const onPostChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
+    props.updateNewPostText(e.currentTarget.value)
     }
 
 
@@ -35,7 +36,7 @@ function MyPosts(props: MyPostsPropsType) {
                 <div>
                     <div>
                         <div>
-                            <textarea ref={newPostElement} value={213} onChange ={props.newPostText}/>
+                            <textarea ref={newPostElement} value={props.newPostText} onChange ={onPostChange}/>
                         </div>
                         <div>
                             <button onClick={addPost}>Add post

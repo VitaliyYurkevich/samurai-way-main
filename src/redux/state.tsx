@@ -1,4 +1,6 @@
-import {rerenderEntireTree} from "../render";
+let rerenderEntireTree = (state:statePropsType) => {
+    console.log(state)
+}
 
 export type dialogsPropsType = {
     id: number
@@ -30,6 +32,7 @@ export type statePropsType = {
     profilePage: profilePagePropsType
     messagesPage: messagePagePropsType
 }
+
 
 
 export let state: statePropsType = {
@@ -67,10 +70,18 @@ export let state: statePropsType = {
 export const addPost= (postMessage: string) => {
     let newPost = {id: 4, message: postMessage, likesCount: 0}
     state.profilePage.posts.push(newPost)
+    state.profilePage.newPostText = ''
     rerenderEntireTree(state)
-
 }
 
+export const updateNewPostText = (newText: string) => {
+    state.profilePage.newPostText = newText
+    rerenderEntireTree(state)
+}
+
+export const subscribe = (observer:any) => {
+rerenderEntireTree = observer
+}
 
 
 
