@@ -45,7 +45,6 @@ export let store: StorePropsType = {
         this.callSubscriber = observer
     },
     getState() {
-
         return this._state
     }
 }
