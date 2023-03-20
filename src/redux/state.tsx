@@ -31,6 +31,14 @@ export let store: StorePropsType = {
     callSubscriber() {
         console.log(this._state)
     },
+
+    getState() {
+        return this._state
+    },
+    subscribe(observer: (state: statePropsType) => void) {
+        this.callSubscriber = observer
+    },
+
     addPost(postMessage: string) {
         let newPost = {id: 4, message: postMessage, likesCount: 0}
         this._state.profilePage.posts.push(newPost)
@@ -41,21 +49,30 @@ export let store: StorePropsType = {
         this._state.profilePage.newPostText = newText
         this.callSubscriber(this._state)
     },
-    subscribe(observer: (state: statePropsType) => void) {
-        this.callSubscriber = observer
-    },
-    getState() {
-        return this._state
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {id: 4, message: action.postMessage, likesCount: 0}
+            this._state.profilePage.posts.push(newPost)
+            this._state.profilePage.newPostText = ''
+            this.callSubscriber(this._state)
+        } else if(action.type === 'UPDATE-NEW-POST-TEXT')
+            {
+            this._state.profilePage.newPostText = action.newText
+            this.callSubscriber(this._state)
+        }
     }
+
 }
+
 
 export type StorePropsType = {
     _state: statePropsType
-    callSubscriber: (state:statePropsType) => void
+    callSubscriber: (state: statePropsType) => void
     addPost: (postMessage: string) => void
     updateNewPostText: (newText: string) => void
     subscribe: (observer: () => void) => void
     getState: () => statePropsType
+    dispatch: (action: any) => void
 }
 
 export type dialogsPropsType = {

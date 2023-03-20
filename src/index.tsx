@@ -7,7 +7,6 @@ import App from "./App";
 
 
 export let rerenderEntireTree = () => {
-  /*  const state = store.getState*/
 
     ReactDOM.render(
         <BrowserRouter>
