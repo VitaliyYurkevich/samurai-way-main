@@ -1,7 +1,7 @@
 import React, {ChangeEvent, RefObject, useState} from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
-import {postPropsType, profilePagePropsType, statePropsType, updateNewPostText} from "../../../redux/state";
+import {postPropsType, profilePagePropsType, statePropsType} from "../../../redux/state";
 
 
 
@@ -19,6 +19,7 @@ function MyPosts(props: MyPostsPropsType) {
     let postElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}></Post>)
 
     const addPost = () => {
+
         if (newPostElement.current?.value) {
             props.addPost(newPostElement.current?.value)
             /*newPostElement.current.value = ''*/
@@ -26,7 +27,9 @@ function MyPosts(props: MyPostsPropsType) {
     }
 
     const onPostChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
+
     props.updateNewPostText(e.currentTarget.value)
+
     }
 
 
