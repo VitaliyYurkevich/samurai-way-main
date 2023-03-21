@@ -5,6 +5,7 @@ export let store: StorePropsType = {
                 {id: 1, message: 'Hi, how are you?', likesCount: 2},
                 {id: 2, message: 'Its the first post', likesCount: 2},
                 {id: 3, message: 'Like dont see you', likesCount: 2}
+
             ],
             newPostText: ''
         },
@@ -28,6 +29,7 @@ export let store: StorePropsType = {
         },
 
     },
+
     callSubscriber() {
         console.log(this._state)
     },
@@ -63,7 +65,6 @@ export let store: StorePropsType = {
     }
 
 }
-
 
 export type StorePropsType = {
     _state: statePropsType
