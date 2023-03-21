@@ -13,7 +13,7 @@ function Profile() {
             <MyPosts dispatch={store.dispatch.bind(store)}
                      updateNewPostText={store.updateNewPostText.bind(store)}
                      newPostText={store._state.profilePage.newPostText}
-                     addPost={store.addPost.bind(store)}
+                     /*addPost={store.addPost.bind(store)}*/
                      posts={store._state.profilePage.posts}/>
 
         </div>

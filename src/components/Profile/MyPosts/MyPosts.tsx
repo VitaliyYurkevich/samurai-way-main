@@ -7,7 +7,7 @@ import {ActionsTypes, postPropsType, profilePagePropsType, statePropsType} from 
 
 type MyPostsPropsType = {
     posts: postPropsType[]
-    addPost: (postMessage: string) => void
+    /*addPost: (postMessage: string) => void*/
     newPostText: string
     updateNewPostText: (newText: string) => void
     dispatch: (action: ActionsTypes) => void
@@ -23,7 +23,7 @@ function MyPosts(props: MyPostsPropsType) {
 props.dispatch({type: "ADD-POST", postMessage: props.newPostText})
 
         if (newPostElement.current?.value) {
-            props.addPost(newPostElement.current?.value)
+            props.dispatch.bind(newPostElement.current?.value)
             /*newPostElement.current.value = ''*/
         }
     }
