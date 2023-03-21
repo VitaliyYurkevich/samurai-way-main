@@ -72,8 +72,20 @@ export type StorePropsType = {
     updateNewPostText: (newText: string) => void
     subscribe: (observer: () => void) => void
     getState: () => statePropsType
-    dispatch: (action: any) => void
+    dispatch: (action: AddPostActionType |ChangeNewTextActionType ) => void
 }
+
+type AddPostActionType = {
+    type: 'ADD-POST'
+    postMessage: string
+}
+
+type ChangeNewTextActionType = {
+    type: 'UPDATE-NEW-POST-TEXT'
+    newText: string
+}
+
+export type ActionsTypes = AddPostActionType | ChangeNewTextActionType
 
 export type dialogsPropsType = {
     id: number

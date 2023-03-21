@@ -1,7 +1,7 @@
 import React, {ChangeEvent, RefObject, useState} from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
-import {postPropsType, profilePagePropsType, statePropsType} from "../../../redux/state";
+import {ActionsTypes, postPropsType, profilePagePropsType, statePropsType} from "../../../redux/state";
 
 
 
@@ -10,6 +10,7 @@ type MyPostsPropsType = {
     addPost: (postMessage: string) => void
     newPostText: string
     updateNewPostText: (newText: string) => void
+    dispatch: (action: ActionsTypes) => void
 }
 
 function MyPosts(props: MyPostsPropsType) {
@@ -19,6 +20,7 @@ function MyPosts(props: MyPostsPropsType) {
     let postElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}></Post>)
 
     const addPost = () => {
+props.dispatch({type: "ADD-POST", postMessage: props.newPostText})
 
         if (newPostElement.current?.value) {
             props.addPost(newPostElement.current?.value)
