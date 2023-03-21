@@ -64,7 +64,7 @@ export let store: StorePropsType = {
 
 }
 
-
+console.log()
 export type StorePropsType = {
     _state: statePropsType
     callSubscriber: (state: statePropsType) => void
