@@ -65,7 +65,7 @@ export let store: StorePropsType = {
     }
 
 }
-console.log('f')
+
 export type StorePropsType = {
     _state: statePropsType
     callSubscriber: (state: statePropsType) => void
@@ -80,7 +80,7 @@ type AddPostActionType = {
     type: 'ADD-POST'
     postMessage: string
 }
-
+console.log('f')
 type ChangeNewTextActionType = {
     type: 'UPDATE-NEW-POST-TEXT'
     newText: string
