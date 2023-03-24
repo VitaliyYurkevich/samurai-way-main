@@ -36,7 +36,7 @@ function MyPosts(props: MyPostsPropsType) {
 
 
     }
-
+    console.log('')
 
     return (
         <div className={classes.postsBlock}>
