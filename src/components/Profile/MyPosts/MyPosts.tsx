@@ -2,6 +2,7 @@ import React, {ChangeEvent, RefObject, useState} from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
 import {ActionsTypes, postPropsType, profilePagePropsType, statePropsType} from "../../../redux/state";
+import {log} from "util";
 
 
 type MyPostsPropsType = {
@@ -37,7 +38,7 @@ function MyPosts(props: MyPostsPropsType) {
 
     }
 
-
+    console.log('bn')
     return (
         <div className={classes.postsBlock}>
             <h3>My posts</h3>
