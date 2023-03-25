@@ -14,7 +14,7 @@ type AppPropsType = {
     store: StorePropsType
 }
 
-console.log('bn')
+
 const App: React.FC<AppPropsType> = (props) => {
 
     const state = props.store.getState()
