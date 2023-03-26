@@ -4,7 +4,7 @@ import React from "react";
 type MessageType = {
     message: string
 }
-console.log('rejected')
+
 
 function Message(props: MessageType) {
     return (
