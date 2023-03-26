@@ -11,7 +11,7 @@ type DialogsType = {
     name: string
     id: number
 }
-
+console.log('rejected')
 function DialogsItem(props: DialogsType) {
     let path = '/dialogs/' + props.id
     return (
