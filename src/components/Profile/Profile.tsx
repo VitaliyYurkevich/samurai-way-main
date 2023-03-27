@@ -4,7 +4,7 @@ import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {store} from "../../redux/state";
 
-console.log('status')
+
 function Profile() {
 
     return (
