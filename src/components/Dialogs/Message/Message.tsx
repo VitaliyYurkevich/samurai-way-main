@@ -18,6 +18,5 @@ function Message(props: MessageType) {
         </div>
     )
 }
-
-
+console.log('status')
 export default Message
