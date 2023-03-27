@@ -19,5 +19,5 @@ function Message(props: MessageType) {
     )
 }
 
-console.log('status')
+
 export default Message
