@@ -13,7 +13,7 @@ import {StorePropsType} from "./redux/state";
 type AppPropsType = {
     store: StorePropsType
 }
-console.log('status')
+
 
 const App: React.FC<AppPropsType> = (props) => {
 
