@@ -1,11 +1,12 @@
 import classes from "../Dialogs.module.css";
 import React from "react";
+import {log} from "util";
 
 type MessageType = {
     message: string
 }
 
-
+console.log('kj')
 function Message(props: MessageType) {
     return (
         <div>
