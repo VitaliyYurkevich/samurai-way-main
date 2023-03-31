@@ -5,7 +5,7 @@ import {log} from "util";
 type MessageType = {
     message: string
 }
-
+console.log('h')
 
 function Message(props: MessageType) {
     return (
