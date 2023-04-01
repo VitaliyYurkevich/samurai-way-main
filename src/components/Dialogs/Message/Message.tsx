@@ -6,7 +6,7 @@ type MessageType = {
     message: string
 }
 
-
+console.log('hg')
 function Message(props: MessageType) {
     return (
         <div>
