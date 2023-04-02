@@ -8,7 +8,7 @@ type MessageType = {
     likesCount: number
 }
 
-console.log('as')
+
 function Post(props: MessageType) {
 
 
