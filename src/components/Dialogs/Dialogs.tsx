@@ -4,7 +4,7 @@ import DialogsItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {statePropsType} from "../../redux/state";
 
-console.log('as')
+
 
 
 function Dialogs(props: statePropsType) {
