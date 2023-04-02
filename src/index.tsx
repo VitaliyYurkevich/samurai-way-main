@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
 
-console.log('as')
+
 export let rerenderEntireTree = () => {
 
     ReactDOM.render(
