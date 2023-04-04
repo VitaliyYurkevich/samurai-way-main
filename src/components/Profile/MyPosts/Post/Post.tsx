@@ -11,7 +11,6 @@ type MessageType = {
 
 function Post(props: MessageType) {
 
-    console.log('')
 
     return (
         <div>
