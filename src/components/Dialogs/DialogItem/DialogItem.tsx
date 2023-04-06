@@ -6,7 +6,7 @@ type DialogsDataPropsType = {
     id: number
     name: string
 }
-
+console.log('jh')
 type DialogsType = {
     name: string
     id: number
