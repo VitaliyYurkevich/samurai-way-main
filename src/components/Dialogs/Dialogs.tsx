@@ -8,7 +8,7 @@ import {statePropsType} from "../../redux/state";
 
 
 function Dialogs(props: statePropsType) {
-
+    console.log('jh')
     let dialogsElements = props.messagesPage.dialogs.map(d => <DialogsItem name={d.name} id={d.id}/>)
     let messagesElements = props.messagesPage.messages.map((m) => {
         return(
