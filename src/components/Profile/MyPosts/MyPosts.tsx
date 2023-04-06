@@ -12,7 +12,7 @@ type MyPostsPropsType = {
     updateNewPostText: (newText: string) => void
     dispatch: (action: ActionsTypes) => void
 }
-
+console.log('jh')
 function MyPosts(props: MyPostsPropsType) {
 
     let newPostElement: RefObject<HTMLTextAreaElement> = React.createRef()
