@@ -73,7 +73,7 @@ export type StorePropsType = {
     updateNewPostText: (newText: string) => void
     subscribe: (observer: () => void) => void
     getState: () => statePropsType
-    dispatch: (action: AddPostActionType |ChangeNewTextActionType ) => void
+    dispatch: (action: AddPostActionType | ChangeNewTextActionType ) => void
 }
 
 type AddPostActionType = {
