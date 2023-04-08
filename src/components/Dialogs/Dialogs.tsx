@@ -17,7 +17,7 @@ function Dialogs(props: statePropsType) {
 
         )
     })
-
+    console.log()
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
