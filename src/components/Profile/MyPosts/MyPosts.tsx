@@ -1,7 +1,14 @@
 import React, {ChangeEvent, RefObject, useState} from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
-import {ActionsTypes, postPropsType, profilePagePropsType, statePropsType} from "../../../redux/state";
+import {
+    ActionsTypes,
+    addPostAC,
+    postPropsType,
+    profilePagePropsType,
+    statePropsType,
+    updateNewPostTextAC
+} from "../../../redux/state";
 import {log} from "util";
 
 
@@ -12,7 +19,9 @@ type MyPostsPropsType = {
     updateNewPostText: (newText: string) => void
     dispatch: (action: ActionsTypes) => void
 }
-console.log('jh')
+
+
+
 function MyPosts(props: MyPostsPropsType) {
 
     let newPostElement: RefObject<HTMLTextAreaElement> = React.createRef()
@@ -20,7 +29,7 @@ function MyPosts(props: MyPostsPropsType) {
     let postElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}></Post>)
 
     const addPost = () => {
-        props.dispatch({type: "ADD-POST", postMessage: props.newPostText})
+        props.dispatch(addPostAC(props.newPostText))
 
         /*if (newPostElement.current?.value) {
             props.dispatch({type: "ADD-POST", postMessage: props.newPostText})
@@ -33,7 +42,7 @@ function MyPosts(props: MyPostsPropsType) {
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
 
         /*props.updateNewPostText(e.currentTarget.value)*/
-        props.dispatch({type: "UPDATE-NEW-POST-TEXT", 'newText': e.currentTarget.value})
+        props.dispatch(updateNewPostTextAC(e.currentTarget.value))
 
 
     }

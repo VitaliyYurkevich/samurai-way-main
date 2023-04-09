@@ -86,6 +86,21 @@ type ChangeNewTextActionType = {
     newText: string
 }
 
+export const addPostAC = (postText: string): AddPostActionType  => {
+    return {
+        type:  'ADD-POST',
+        postMessage: postText
+}
+}
+
+export const updateNewPostTextAC = (newText: string):ChangeNewTextActionType => {
+return {
+    type: "UPDATE-NEW-POST-TEXT",
+    newText: newText
+}
+
+}
+
 export type ActionsTypes = AddPostActionType | ChangeNewTextActionType
 
 export type dialogsPropsType = {
