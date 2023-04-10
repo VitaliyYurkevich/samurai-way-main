@@ -1,6 +1,7 @@
 import React from 'react';
+import {ActionsTypes, messagePagePropsType, profilePagePropsType, statePropsType} from "./state";
 
-const DialogsReducer = (state: any, action: any) => {
+const DialogsReducer = (state: statePropsType, action: ActionsTypes):statePropsType => {
    if(action.type === 'UPDATE-NEW-MESSAGE-BODY') {
     state.messagesPage.newMessageBody = action.body
 

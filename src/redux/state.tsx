@@ -1,3 +1,6 @@
+import ProfileReducer from "./profile-reducer";
+import DialogsReducer from "./dialogs-reducer";
+
 export let store: StorePropsType = {
     _state: {
         profilePage: {
@@ -54,7 +57,13 @@ export let store: StorePropsType = {
         this.callSubscriber(this._state)
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+        this._state.profilePage = ProfileReducer(this._state.profilePage, action)
+        this._state.messagesPage = DialogsReducer(this._state.messagesPage, action)
+
+        this.callSubscriber(this._state )
+
+
+  /*      if (action.type === 'ADD-POST') {
             let newPost = {id: 4, message: action.postMessage, likesCount: 0}
             this._state.profilePage.posts.push(newPost)
             this._state.profilePage.newPostText = ''
@@ -70,9 +79,8 @@ export let store: StorePropsType = {
             this._state.messagesPage.newMessageBody = ''
             this._state.messagesPage.messages.push({id: 7, message: body})
             this.callSubscriber(this._state)
-        }
+        }*/
     }
-
 }
 
 export type StorePropsType = {
