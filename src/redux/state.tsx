@@ -57,7 +57,9 @@ export let store: StorePropsType = {
         this.callSubscriber(this._state)
     },
     dispatch(action) {
+        // @ts-ignore
         this._state.profilePage = ProfileReducer(this._state.profilePage, action)
+        // @ts-ignore
         this._state.messagesPage = DialogsReducer(this._state.messagesPage, action)
 
         this.callSubscriber(this._state )

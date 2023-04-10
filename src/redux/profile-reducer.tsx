@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActionsTypes, profilePagePropsType, statePropsType, StorePropsType} from "./state";
+import {ActionsTypes, postPropsType, profilePagePropsType, statePropsType, StorePropsType} from "./state";
 
 
 
