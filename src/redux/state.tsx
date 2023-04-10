@@ -73,35 +73,25 @@ export type StorePropsType = {
     updateNewPostText: (newText: string) => void
     subscribe: (observer: () => void) => void
     getState: () => statePropsType
-    dispatch: (action: AddPostActionType | ChangeNewTextActionType ) => void
+    dispatch: (action: ReturnType<typeof addPostAC> | ReturnType<typeof updateNewPostTextAC> ) => void
 }
 
-type AddPostActionType = {
-    type: 'ADD-POST'
-    postMessage: string
-}
-
-type ChangeNewTextActionType = {
-    type: 'UPDATE-NEW-POST-TEXT'
-    newText: string
-}
-
-export const addPostAC = (postText: string): AddPostActionType  => {
+export const addPostAC = (postText: string) => {
     return {
         type:  'ADD-POST',
         postMessage: postText
-}
+} as const
 }
 
-export const updateNewPostTextAC = (newText: string):ChangeNewTextActionType => {
+export const updateNewPostTextAC = (newText: string) => {
 return {
     type: "UPDATE-NEW-POST-TEXT",
     newText: newText
-}
+} as const
 
 }
 
-export type ActionsTypes = AddPostActionType | ChangeNewTextActionType
+export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof updateNewPostTextAC>
 
 export type dialogsPropsType = {
     id: number
