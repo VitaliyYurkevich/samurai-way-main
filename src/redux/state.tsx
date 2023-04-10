@@ -25,7 +25,9 @@ export let store: StorePropsType = {
                 {id: 4, message: 'WTF'},
                 {id: 5, message: 'Whats up'},
                 {id: 6, message: 'Valera'},
-            ]
+            ],
+            newMessageBody: ''
+
         },
 
     },
@@ -57,9 +59,16 @@ export let store: StorePropsType = {
             this._state.profilePage.posts.push(newPost)
             this._state.profilePage.newPostText = ''
             this.callSubscriber(this._state)
-        } else if(action.type === 'UPDATE-NEW-POST-TEXT')
-            {
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
             this._state.profilePage.newPostText = action.newText
+            this.callSubscriber(this._state)
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-BODY') {
+            this._state.messagesPage.newMessageBody = action.body
+            this.callSubscriber(this._state)
+        } else if (action.type === 'SEND-MESSAGE') {
+            let body = this._state.messagesPage.newMessageBody
+            this._state.messagesPage.newMessageBody = ''
+            this._state.messagesPage.messages.push({id: 7, message: body})
             this.callSubscriber(this._state)
         }
     }
@@ -73,25 +82,45 @@ export type StorePropsType = {
     updateNewPostText: (newText: string) => void
     subscribe: (observer: () => void) => void
     getState: () => statePropsType
-    dispatch: (action: ReturnType<typeof addPostAC> | ReturnType<typeof updateNewPostTextAC> ) => void
+    dispatch: (action: ReturnType<typeof addPostAC> |
+        ReturnType<typeof updateNewPostTextAC> |
+        ReturnType<typeof updateNewMessageBody> |
+        ReturnType<typeof sendMessage>
+    ) => void
+
 }
 
+export const sendMessage = () => {
+    return {
+        type: 'SEND-MESSAGE'
+    } as const
+}
 export const addPostAC = (postText: string) => {
     return {
-        type:  'ADD-POST',
+        type: 'ADD-POST',
         postMessage: postText
-} as const
+    } as const
 }
 
 export const updateNewPostTextAC = (newText: string) => {
-return {
-    type: "UPDATE-NEW-POST-TEXT",
-    newText: newText
-} as const
+    return {
+        type: "UPDATE-NEW-POST-TEXT",
+        newText: newText
+    } as const
 
 }
 
-export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof updateNewPostTextAC>
+export const updateNewMessageBody = (body: string) => {
+    return {
+        type: 'UPDATE-NEW-MESSAGE-BODY',
+        body: body
+    } as const
+}
+
+export type ActionsTypes = ReturnType<typeof addPostAC> |
+    ReturnType<typeof updateNewPostTextAC> |
+    ReturnType<typeof updateNewMessageBody> |
+    ReturnType<typeof sendMessage>
 
 export type dialogsPropsType = {
     id: number
@@ -117,6 +146,7 @@ export type profilePagePropsType = {
 export type messagePagePropsType = {
     dialogs: dialogsPropsType[]
     messages: messagesPropsType[]
+    newMessageBody: string
 }
 
 export type statePropsType = {
