@@ -10,11 +10,7 @@ type MessageType = {
 function Message(props: MessageType) {
     return (
         <div>
-        <div className={classes.message}>
-         <textarea>{props.message}</textarea>
-        </div>
-        <div>
-            <button>Отправить сообщение</button>
+        <div className={classes.message}>{props.message}
         </div>
         </div>
     )
