@@ -84,13 +84,13 @@ export type StorePropsType = {
     getState: () => statePropsType
     dispatch: (action: ReturnType<typeof addPostAC> |
         ReturnType<typeof updateNewPostTextAC> |
-        ReturnType<typeof updateNewMessageBody> |
-        ReturnType<typeof sendMessage>
+        ReturnType<typeof updateNewMessageBodyAC> |
+        ReturnType<typeof sendMessageAC>
     ) => void
 
 }
 
-export const sendMessage = () => {
+export const sendMessageAC = () => {
     return {
         type: 'SEND-MESSAGE'
     } as const
@@ -101,7 +101,6 @@ export const addPostAC = (postText: string) => {
         postMessage: postText
     } as const
 }
-
 export const updateNewPostTextAC = (newText: string) => {
     return {
         type: "UPDATE-NEW-POST-TEXT",
@@ -109,8 +108,7 @@ export const updateNewPostTextAC = (newText: string) => {
     } as const
 
 }
-
-export const updateNewMessageBody = (body: string) => {
+export const updateNewMessageBodyAC = (body: string) => {
     return {
         type: 'UPDATE-NEW-MESSAGE-BODY',
         body: body
@@ -119,8 +117,8 @@ export const updateNewMessageBody = (body: string) => {
 
 export type ActionsTypes = ReturnType<typeof addPostAC> |
     ReturnType<typeof updateNewPostTextAC> |
-    ReturnType<typeof updateNewMessageBody> |
-    ReturnType<typeof sendMessage>
+    ReturnType<typeof updateNewMessageBodyAC> |
+    ReturnType<typeof sendMessageAC>
 
 export type dialogsPropsType = {
     id: number
