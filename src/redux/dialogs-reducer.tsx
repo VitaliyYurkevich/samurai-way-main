@@ -1,14 +1,14 @@
 import React from 'react';
-import {ActionsTypes, messagePagePropsType, profilePagePropsType, statePropsType} from "./state";
+import {ActionsTypes, messagePagePropsType, messagesPropsType, profilePagePropsType, statePropsType} from "./state";
 
-const DialogsReducer = (state: statePropsType, action: ActionsTypes):statePropsType => {
+const DialogsReducer = (state: messagePagePropsType, action: ActionsTypes):messagePagePropsType => {
    if(action.type === 'UPDATE-NEW-MESSAGE-BODY') {
-    state.messagesPage.newMessageBody = action.body
+    state.newMessageBody = action.body
 
 } else if (action.type === 'SEND-MESSAGE') {
-    let body = state.messagesPage.newMessageBody
-    state.messagesPage.newMessageBody = ''
-    state.messagesPage.messages.push({id: 7, message: body})
+    let body = state.newMessageBody
+    state.newMessageBody = ''
+    state.messages.push({id: 7, message: body})
 }
     return state
 };

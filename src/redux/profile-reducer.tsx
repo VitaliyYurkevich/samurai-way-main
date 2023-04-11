@@ -3,13 +3,13 @@ import {ActionsTypes, postPropsType, profilePagePropsType, statePropsType, Store
 
 
 
-const ProfileReducer = (state: statePropsType, action: ActionsTypes):statePropsType => {
+const ProfileReducer = (state: profilePagePropsType, action: ActionsTypes):profilePagePropsType => {
     if (action.type === 'ADD-POST') {
         let newPost = {id: 4, message: action.postMessage, likesCount: 0}
-        state.profilePage.posts.push(newPost)
-        state.profilePage.newPostText = ''
+        state.posts.push(newPost)
+        state.newPostText = ''
     } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-        state.profilePage.newPostText = action.newText
+        state.newPostText = action.newText
     }
 
 
