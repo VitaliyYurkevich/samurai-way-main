@@ -4,11 +4,10 @@ import DialogsItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {
     messagePagePropsType,
-    profilePagePropsType, sendMessageAC,
-    statePropsType,
+    profilePagePropsType,
     StorePropsType,
-    updateNewMessageBodyAC
 } from "../../redux/state";
+import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/dialogs-reducer";
 
 type DialogsPropsType = {
     store: StorePropsType

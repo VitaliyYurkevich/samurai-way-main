@@ -1,7 +1,19 @@
 import React from 'react';
 import {ActionsTypes, profilePagePropsType} from "./state";
 
+export const addPostAC = (postText: string) => {
+    return {
+        type: 'ADD-POST',
+        postMessage: postText
+    } as const
+}
+export const updateNewPostTextAC = (newText: string) => {
+    return {
+        type: "UPDATE-NEW-POST-TEXT",
+        newText: newText
+    } as const
 
+}
 
 const ProfileReducer = (state: profilePagePropsType, action: ActionsTypes):profilePagePropsType => {
     switch (action.type) {

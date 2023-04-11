@@ -3,13 +3,9 @@ import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
 import {
     ActionsTypes,
-    addPostAC,
     postPropsType,
-    profilePagePropsType,
-    statePropsType,
-    updateNewPostTextAC
 } from "../../../redux/state";
-import {log} from "util";
+import {addPostAC, updateNewPostTextAC} from "../../../redux/profile-reducer";
 
 
 type MyPostsPropsType = {

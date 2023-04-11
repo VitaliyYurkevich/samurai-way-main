@@ -1,5 +1,5 @@
-import ProfileReducer from "./profile-reducer";
-import DialogsReducer from "./dialogs-reducer";
+import ProfileReducer, {addPostAC, updateNewPostTextAC} from "./profile-reducer";
+import DialogsReducer, {sendMessageAC, updateNewMessageBodyAC} from "./dialogs-reducer";
 
 export let store: StorePropsType = {
     _state: {
@@ -98,30 +98,7 @@ export type StorePropsType = {
 
 }
 
-export const sendMessageAC = () => {
-    return {
-        type: 'SEND-MESSAGE'
-    } as const
-}
-export const addPostAC = (postText: string) => {
-    return {
-        type: 'ADD-POST',
-        postMessage: postText
-    } as const
-}
-export const updateNewPostTextAC = (newText: string) => {
-    return {
-        type: "UPDATE-NEW-POST-TEXT",
-        newText: newText
-    } as const
 
-}
-export const updateNewMessageBodyAC = (body: string) => {
-    return {
-        type: 'UPDATE-NEW-MESSAGE-BODY',
-        body: body
-    } as const
-}
 
 export type ActionsTypes = ReturnType<typeof addPostAC> |
     ReturnType<typeof updateNewPostTextAC> |
