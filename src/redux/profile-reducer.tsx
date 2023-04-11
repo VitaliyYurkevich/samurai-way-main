@@ -4,12 +4,15 @@ import {ActionsTypes, postPropsType, profilePagePropsType, statePropsType, Store
 
 
 const ProfileReducer = (state: profilePagePropsType, action: ActionsTypes):profilePagePropsType => {
-    if (action.type === 'ADD-POST') {
-        let newPost = {id: 4, message: action.postMessage, likesCount: 0}
-        state.posts.push(newPost)
-        state.newPostText = ''
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-        state.newPostText = action.newText
+    switch (action.type) {
+        case 'ADD-POST':
+            let newPost = {id: 4, message: action.postMessage, likesCount: 0}
+            state.posts.push(newPost)
+            state.newPostText = ''
+            break;
+        case 'UPDATE-NEW-POST-TEXT':
+            state.newPostText = action.newText
+            break;
     }
 
 
