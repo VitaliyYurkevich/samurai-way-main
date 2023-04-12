@@ -10,10 +10,10 @@ import {addPostAC, updateNewPostTextAC} from "../../../redux/profile-reducer";
 
 type MyPostsPropsType = {
     posts: postPropsType[]
-    /*addPost: (postMessage: string) => void*/
+    addPost: () => void
     newPostText: string
-    updateNewPostText: (newText: string) => void
-    dispatch: (action: ActionsTypes) => void
+    updateNewPostText: (text: string) => void
+    /*dispatch: (action: ActionsTypes) => void*/
 }
 
 
@@ -25,7 +25,7 @@ function MyPosts(props: MyPostsPropsType) {
     let postElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}></Post>)
 
     const addPost = () => {
-        props.dispatch(addPostAC(props.newPostText))
+        props.addPost()
 
         /*if (newPostElement.current?.value) {
             props.dispatch({type: "ADD-POST", postMessage: props.newPostText})
@@ -36,9 +36,10 @@ function MyPosts(props: MyPostsPropsType) {
     }
 
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+let text = e.currentTarget.value
+        /*updateNewPostTextAC(text)*/
+        props.updateNewPostText(text)
 
-        /*props.updateNewPostText(e.currentTarget.value)*/
-        props.dispatch(updateNewPostTextAC(e.currentTarget.value))
 
 
     }
