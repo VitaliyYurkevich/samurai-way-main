@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActionsTypes, messagePagePropsType, messagesPropsType, profilePagePropsType, statePropsType} from "./state";
+import {ActionsTypes, dialogsPagePropsType, messagesPropsType, profilePagePropsType, statePropsType} from "./state";
 
 export const sendMessageAC = () => {
     return {
@@ -15,7 +15,7 @@ export const updateNewMessageBodyAC = (body: string) => {
 
 
 
-const DialogsReducer = (state: messagePagePropsType, action: ActionsTypes):messagePagePropsType => {
+const DialogsReducer = (state: dialogsPagePropsType, action: ActionsTypes):dialogsPagePropsType => {
     switch (action.type) {
         case 'UPDATE-NEW-MESSAGE-BODY':
             state.newMessageBody = action.body

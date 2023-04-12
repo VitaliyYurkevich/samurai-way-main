@@ -12,7 +12,7 @@ export let store: StorePropsType = {
             ],
             newPostText: ''
         },
-        messagesPage: {
+        dialogsPage: {
             dialogs: [
                 {id: 1, name: 'Dimych'},
                 {id: 2, name: 'Andrey'},
@@ -58,7 +58,7 @@ export let store: StorePropsType = {
     },
     dispatch(action) {
         this._state.profilePage = ProfileReducer(this._state.profilePage, action)
-        this._state.messagesPage = DialogsReducer(this._state.messagesPage, action)
+        this._state.dialogsPage = DialogsReducer(this._state.dialogsPage, action)
 
         this.callSubscriber(this._state )
 
@@ -126,7 +126,7 @@ export type profilePagePropsType = {
     newPostText: string
 }
 
-export type messagePagePropsType = {
+export type dialogsPagePropsType = {
     dialogs: dialogsPropsType[]
     messages: messagesPropsType[]
     newMessageBody: string
@@ -134,7 +134,7 @@ export type messagePagePropsType = {
 
 export type statePropsType = {
     profilePage: profilePagePropsType
-    messagesPage: messagePagePropsType
+    dialogsPage: dialogsPagePropsType
 }
 
 
