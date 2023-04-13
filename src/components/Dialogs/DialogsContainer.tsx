@@ -9,6 +9,7 @@ import {
 } from "../../redux/state";
 import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
+import StoreContext from "../../storeContext";
 
 type DialogsPropsTyp = {
     store: StorePropsType
@@ -16,18 +17,30 @@ type DialogsPropsTyp = {
 
 function DialogsContainer(props: DialogsPropsTyp) {
 
-    let state = props.store.getState()
-    let onSendMessageClick = () => {
-     props.store.dispatch(sendMessageAC())
-    }
-    let onNewMessageChange = (body: string) => {
-
-        props.store.dispatch(updateNewMessageBodyAC(body))
-    }
 
     return (
         <div className={classes.dialogs}>
-           <Dialogs dialogsPage={state.dialogsPage} sendMessage={onSendMessageClick} updateNewMessageBody={onNewMessageChange} />
+            <StoreContext.Consumer>{
+                (store)=>{
+                    let state = store.getState()
+                    let onSendMessageClick = () => {
+                        store.dispatch(sendMessageAC())
+                    }
+                    let onNewMessageChange = (body: string) => {
+
+                        store.dispatch(updateNewMessageBodyAC(body))
+                    }
+
+                    return(
+                        <Dialogs dialogsPage={state.dialogsPage}
+                                 sendMessage={onSendMessageClick}
+                                 updateNewMessageBody={onNewMessageChange}
+                        />
+                    )
+                }
+                }
+            </StoreContext.Consumer>
+
         </div>
 
 
