@@ -10,13 +10,16 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import {StorePropsType} from "./redux/state";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import {AppType} from "./redux/redux-store";
 
+/*
 type AppPropsType = {
     store: StorePropsType
 }
+*/
 
 
-const App: React.FC<AppPropsType> = (props) => {
+const App = (props: any) => {
 
     const state = props.store.getState()
 
