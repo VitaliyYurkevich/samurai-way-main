@@ -7,7 +7,7 @@ import App from "./App";
 import {statePropsType, StorePropsType} from "./redux/state";
 import StoreContext, {Provider} from "./storeContext";
 
-console.log('f')
+
 
 
 export let rerenderEntireTree = (state: statePropsType) => {
