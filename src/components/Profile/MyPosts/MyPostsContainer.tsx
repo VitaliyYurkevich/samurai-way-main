@@ -10,7 +10,7 @@ type MyPostsPropsType = {
     store: StorePropsType
 }
 
-console.log('s')
+
 function MyPostsContainer(props: MyPostsPropsType) {
 
     return (
