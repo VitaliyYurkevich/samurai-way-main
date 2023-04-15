@@ -7,7 +7,7 @@ import DialogsReducer, {addTextType, updateNewMessageTextType} from "./dialogs-r
 export type AppType = ReturnType<RootReducerType>*/
 
 export type ActionDispatchTypes = addTextType | addPostType | updateNewMessageTextType | updateNewPostTextType
-
+AppStateType
 
 let RootReducer = combineReducers({
     profilePage: ProfileReducer,
