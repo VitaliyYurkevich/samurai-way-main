@@ -1,7 +1,7 @@
 import ProfileReducer, {addPostAC, updateNewPostTextAC} from "./profile-reducer";
 import DialogsReducer, {sendMessageAC, updateNewMessageBodyAC} from "./dialogs-reducer";
 
-export let store: StorePropsType = {
+/*export let store: StorePropsType = {
     _state: {
         profilePage: {
             posts: [
@@ -22,12 +22,8 @@ export let store: StorePropsType = {
                 {id: 6, name: 'Valera'},
             ],
             messages: [
-                {id: 1, message: 'Hi'},
-                {id: 2, message: 'BlaBla'},
-                {id: 3, message: 'Hello'},
-                {id: 4, message: 'WTF'},
-                {id: 5, message: 'Whats up'},
-                {id: 6, message: 'Valera'},
+
+
             ],
             newMessageBody: ''
 
@@ -55,13 +51,13 @@ export let store: StorePropsType = {
     updateNewPostText(newText: string) {
         this._state.profilePage.newPostText = newText
         this.callSubscriber(this._state)
-    },
-    dispatch(action) {
+    },*/
+ /*   dispatch(action) {
         this._state.profilePage = ProfileReducer(this._state.profilePage, action)
         this._state.dialogsPage = DialogsReducer(this._state.dialogsPage, action)
 
         this.callSubscriber(this._state )
-
+*/
 
   /*      if (action.type === 'ADD-POST') {
             let newPost = {id: 4, message: action.postMessage, likesCount: 0}
@@ -80,9 +76,9 @@ export let store: StorePropsType = {
             this._state.messagesPage.messages.push({id: 7, message: body})
             this.callSubscriber(this._state)
         }*/
-    }
+  /*  }
 }
-
+*/
 export type StorePropsType = {
     _state: statePropsType
     callSubscriber: (state: statePropsType) => void

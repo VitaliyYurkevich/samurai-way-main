@@ -33,11 +33,11 @@ function Dialogs(props: DialogsPropsType) {
     })
     let newMessageBody = props.dialogsPage.newMessageBody
     let onSendMessageClick = () => {
-props.sendMessage()
+        props.sendMessage()
     }
-    let onNewMessageChange = (e:ChangeEvent<HTMLTextAreaElement>) => {
+    let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let body = e.currentTarget.value
-           props.updateNewMessageBody(body)
+        props.updateNewMessageBody(body)
     }
 
     return (

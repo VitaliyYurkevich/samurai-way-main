@@ -1,9 +1,10 @@
-import React, {ChangeEvent, RefObject, useState} from "react";
+import React from "react";
 import classes from './MyPosts.module.css';
 import {StorePropsType} from "../../../redux/state";
 import {addPostAC, updateNewPostTextAC} from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
-import StoreContext from "../../../storeContext";
+import {AppStateType} from "../../../redux/redux-store";
+
 
 
 type MyPostsPropsType = {
@@ -11,15 +12,16 @@ type MyPostsPropsType = {
 }
 
 
-function MyPostsContainer(props: MyPostsPropsType) {
+function MyPostsContainer(state: AppStateType) {
 
     return (
         <div className={classes.postsBlock}>
             <StoreContext.Consumer>{
-                (store) => {
+                (store:StorePropsType) => {
                     let state = store.getState()
                     const addPost = () => {
-                        store.dispatch(addPostAC(state.profilePage.newPostText))
+                        // @ts-ignore
+                        store.dispatch(addPostAC(store.getState().profilePage.newPostText))
 
                         /*if (newPostElement.current?.value) {
                             props.dispatch({type: "ADD-POST", postMessage: props.newPostText})
@@ -34,8 +36,9 @@ function MyPostsContainer(props: MyPostsPropsType) {
                         store.dispatch(updateNewPostTextAC(text))
                     }
 
-                    return (
-                        <MyPosts posts={state.profilePage.posts}
+                    // @ts-ignore
+                    return (// @ts-ignore
+                        <MyPosts posts={state.profilePage.posts}// @ts-ignore
                                  newPostText={state.profilePage.newPostText}
                                  updateNewPostText={onPostChange}
                                  addPost={addPost}/>
