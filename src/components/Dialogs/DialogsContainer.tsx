@@ -6,11 +6,12 @@ import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/dialogs-reducer
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {AppStateType, StorePropsType} from "../../redux/redux-store";
+import {log} from "util";
 
 type MapStatePropsType = {
 
 }
-
+console.log('g')
 function DialogsContainer() {
 
 
