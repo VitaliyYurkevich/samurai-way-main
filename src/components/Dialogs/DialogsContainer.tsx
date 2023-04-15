@@ -1,18 +1,12 @@
-import React, {ChangeEvent} from 'react';
-import classes from './Dialogs.module.css'
-import DialogsItem from "./DialogItem/DialogItem";
-import Message from "./Message/Message";
+import React from 'react';
 import {sendMessageAC, updateNewMessageBodyAC} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
-import {AppStateType, StorePropsType} from "../../redux/redux-store";
-import {log} from "util";
+import {AppStateType} from "../../redux/redux-store";
+import {Dispatch} from "redux";
 
-type MapStatePropsType = {
 
-}
-
-function DialogsContainer() {
+/*function DialogsContainer() {
 
 
     return (
@@ -42,27 +36,30 @@ function DialogsContainer() {
 
 
     )
-}
-
+}*/
 let mapStateToProps = (state: AppStateType) => {
     return {
         dialogsPage: state.messagesPage
     }
 }
 
-let mapDispatchToProps = (dispatch: any) => {
+let mapDispatchToProps = (dispatch: Dispatch):MapDispatchPropsType => {
     return {
-        updateNewMessageBodyAC: () => {
+        updateNewMessageBody: (body: string) => {
             dispatch(updateNewMessageBodyAC(body))
         },
-        sendMessageAC: () => {
+        sendMessage: () => {
             dispatch(sendMessageAC())
         }
     }
 }
 
+export type MapDispatchPropsType = {
+    updateNewMessageBody: (body: string) => void
+    sendMessage: () => void
+}
 
-const SuperDialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
 
 
 export default DialogsContainer

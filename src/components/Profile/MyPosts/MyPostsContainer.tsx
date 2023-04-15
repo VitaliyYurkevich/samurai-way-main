@@ -20,7 +20,7 @@ function MyPostsContainer(state: AppStateType) {
                 (store:StorePropsType) => {
                     let state = store.getState()
                     const addPost = () => {
-                        // @ts-ignore
+
                         store.dispatch(addPostAC(store.getState().profilePage.newPostText))
 
                         /*if (newPostElement.current?.value) {
@@ -36,9 +36,8 @@ function MyPostsContainer(state: AppStateType) {
                         store.dispatch(updateNewPostTextAC(text))
                     }
 
-                    // @ts-ignore
-                    return (// @ts-ignore
-                        <MyPosts posts={state.profilePage.posts}// @ts-ignore
+                    return (
+                        <MyPosts posts={state.profilePage.posts}
                                  newPostText={state.profilePage.newPostText}
                                  updateNewPostText={onPostChange}
                                  addPost={addPost}/>

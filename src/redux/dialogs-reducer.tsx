@@ -1,8 +1,12 @@
 import React from 'react';
-import {ActionsTypes, dialogsPagePropsType, messagesPropsType, profilePagePropsType, statePropsType} from "./state";
+import {addPostAC, updateNewPostTextAC} from "./profile-reducer";
 
 const SEND_MESSAGE = "ADD-TEXT"
 const UPDATE_NEW_MESSAGE_BODY = "UPDATE-NEW-MESSAGE-BODY"
+
+export type ActionsTypes =
+    ReturnType<typeof updateNewMessageBodyAC> |
+    ReturnType<typeof sendMessageAC>
 
 export type  addTextType = {
     type: typeof SEND_MESSAGE
@@ -62,7 +66,7 @@ const initialState = {
 export type DialogsPageType = typeof initialState
 
 
-const DialogsReducer = (state: DialogsPageType, action: ActionsTypes):DialogsPageType => {
+const DialogsReducer = (state: DialogsPageType = initialState, action: ActionsTypes):DialogsPageType => {
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY:
             state.newMessageBody = action.body

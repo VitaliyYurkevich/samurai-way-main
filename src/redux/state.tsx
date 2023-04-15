@@ -95,11 +95,13 @@ export type StorePropsType = {
 }
 
 
+/*
 
 export type ActionsTypes = ReturnType<typeof addPostAC> |
     ReturnType<typeof updateNewPostTextAC> |
     ReturnType<typeof updateNewMessageBodyAC> |
     ReturnType<typeof sendMessageAC>
+*/
 
 export type dialogsPropsType = {
     id: number

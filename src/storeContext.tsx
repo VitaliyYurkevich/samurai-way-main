@@ -1,6 +1,6 @@
-import React from 'react';
+/*import React from 'react';*/
 import {store} from "./redux/redux-store";
-import {StorePropsType} from "./redux/redux-store";
+/*import  from "./redux/redux-store";*/
 
 
 /*
