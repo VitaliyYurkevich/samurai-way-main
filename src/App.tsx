@@ -22,8 +22,8 @@ const App = (props:AppStateType) => {
                 <Header/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-                    <Route path={'/dialogs'} render={() => <DialogsContainer  store={store}
-                                                                             newMessageBody={props.messagesPage.newMessageBody}
+                    <Route path={'/dialogs'} render={() => <DialogsContainer   store={store}
+                                                                               newMessageBody={() => {}}
                                                                              messagePage={props.messagesPage}
                         /*profilePage={state.profilePage}
                         messagesPage={state.messagesPage}*/

@@ -7,12 +7,9 @@ import {AppStateType} from "../../../redux/redux-store";
 
 
 
-type MyPostsPropsType = {
-    store: StorePropsType
-}
 
 
-function MyPostsContainer(state: AppStateType) {
+function MyPostsContainer() {
 
     return (
         <div className={classes.postsBlock}>
@@ -51,6 +48,10 @@ function MyPostsContainer(state: AppStateType) {
         </div>
     )
 }
+
+const Supe
+
+
 
 
 export default MyPostsContainer
