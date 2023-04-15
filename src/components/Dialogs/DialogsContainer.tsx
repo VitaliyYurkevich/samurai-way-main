@@ -11,7 +11,7 @@ import {log} from "util";
 type MapStatePropsType = {
 
 }
-console.log('g')
+
 function DialogsContainer() {
 
 
