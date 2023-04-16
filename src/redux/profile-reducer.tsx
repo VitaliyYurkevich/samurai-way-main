@@ -64,8 +64,6 @@ const ProfileReducer = (state:ProfilePageType=initialState, action: ActionsTypes
         case UPDATE_NEW_POST_TEXT:
             state.newPostText = action.newText
             break;
-        default:
-            return state
     }
 return state
 };
