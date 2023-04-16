@@ -2,14 +2,11 @@ import classes from "../Dialogs.module.css";
 import {NavLink} from "react-router-dom";
 import React from "react";
 
-type DialogsDataPropsType = {
-    id: number
-    name: string
-}
+
 
 type DialogsType = {
     name: string
-    id: number
+    id: string
 }
 
 function DialogsItem(props: DialogsType) {
