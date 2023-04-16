@@ -19,11 +19,12 @@ type MyPostsPropsType = {
 
 function MyPosts(props: MyPostsPropsType) {
 
-    let newPostElement: RefObject<HTMLTextAreaElement> = React.createRef()
+    /*let newPostElement: RefObject<HTMLTextAreaElement> = React.createRef()*/
 
     let postElements = props.profilePage.postData.map(p => <Post message={p.message} likesCount={p.likesCount}></Post>)
 
     const addPost = () => {
+        debugger
         props.addPost()
 
         /*if (newPostElement.current?.value) {
@@ -35,11 +36,10 @@ function MyPosts(props: MyPostsPropsType) {
     }
 
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        debugger
 let text = e.currentTarget.value
         /*updateNewPostTextAC(text)*/
         props.updateNewPostText(text)
-
-
 
     }
 
@@ -50,7 +50,7 @@ let text = e.currentTarget.value
                 <div>
                     <div>
                         <textarea
-                            ref={newPostElement}
+                            /*ref={newPostElement}*/
                             value={props.profilePage.newPostText}
                             onChange={onPostChange}/>
                     </div>
