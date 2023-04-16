@@ -8,11 +8,14 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import {store} from "./redux/redux-store";
+import {ActionDispatchTypes, AppStateType, store} from "./redux/redux-store";
 
+type AppPropsType = {
+    store: AppStateType
+    dispatch: (action:ActionDispatchTypes ) => void
+}
 
-
-const App = (props:any) => {
+const App = (props:AppPropsType) => {
     /*const state = props.getState()*/
 
     return (
@@ -21,9 +24,7 @@ const App = (props:any) => {
                 <Header/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-                    <Route path={'/dialogs'} render={() => <DialogsContainer
-                        store={store}
-                        messagePage={props.messagePage}
+                    <Route path={'/dialogs'} render={() => <DialogsContainer messagePage={props.store.messagesPage}
                     />
                     }/>
                     <Route path={'/profile'} render={() => <Profile/>}/>
