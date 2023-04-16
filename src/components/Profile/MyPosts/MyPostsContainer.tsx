@@ -18,6 +18,7 @@ let mapStateToProps = (state: AppStateType) => {
 }
 
 let mapDispatchToProps = (dispatch: Dispatch):mapDispatchToPropsType => {
+    debugger
     return{
         addPost: () => {
             dispatch(addPostAC())
