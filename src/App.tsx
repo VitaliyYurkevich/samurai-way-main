@@ -8,12 +8,11 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import {AppStateType, store} from "./redux/redux-store";
+import {store} from "./redux/redux-store";
 
 
 
 const App = (props:any) => {
-    debugger
     /*const state = props.getState()*/
 
     return (
