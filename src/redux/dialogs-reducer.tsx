@@ -1,5 +1,7 @@
 import React from 'react';
 import {addPostAC, updateNewPostTextAC} from "./profile-reducer";
+import {ActionDispatchTypes} from "./redux-store";
+import {v1} from "uuid";
 
 const SEND_MESSAGE = "ADD-TEXT"
 const UPDATE_NEW_MESSAGE_BODY = "UPDATE-NEW-MESSAGE-BODY"
@@ -13,7 +15,7 @@ export type  addTextType = {
 }
 export type updateNewMessageTextType = {
     type: typeof UPDATE_NEW_MESSAGE_BODY,
-    newText: string
+    body: string
 }
 
 export const sendMessageAC = () => {
@@ -28,56 +30,47 @@ export const updateNewMessageBodyAC = (body: string) => {
     } as const
 }
 
-export type dialogsType = {
-    id: number
-    name: string
-}
-
-export type messagesType = {
-    id: number
-    message: string
-}
-
-const dialogData: Array<dialogsType> = [
-    {id: 1, name: 'Dimych'},
-    {id: 2, name: 'Andrey'},
-    {id: 3, name: 'Sveta'},
-    {id: 4, name: 'Sasha'},
-    {id: 5, name: 'Viktor'},
-    {id: 6, name: 'Valera'},
-]
-
-const messageData: Array<messagesType> = [
-    {id: 1, message: 'Hi'},
-    {id: 2, message: 'BlaBla'},
-    {id: 3, message: 'Hello'},
-    {id: 4, message: 'WTF'},
-    {id: 5, message: 'Whats up'},
-    {id: 6, message: 'Valera'},
-]
-
-
 const initialState = {
-    dialogData: dialogData,
-    messageData: messageData,
+    dialogs: [
+        {id: v1(), name: 'Dimych'},
+        {id: v1(), name: 'Andrey'},
+        {id: v1(), name: 'Sveta'},
+        {id: v1(), name: 'Sasha'},
+        {id: v1(), name: 'Viktor'},
+        {id: v1(), name: 'Valera'},
+    ],
+    messages: [
+        {id: v1(), message: 'Hi'},
+        {id: v1(), message: 'BlaBla'},
+        {id: v1(), message: 'Hello'},
+        {id: v1(), message: 'WTF'},
+        {id: v1(), message: 'Whats up'},
+        {id: v1(), message: 'Valera'},
+    ],
     newMessageBody: 'hello'
 }
 
 export type DialogsPageType = typeof initialState
 
 
-const DialogsReducer = (state: DialogsPageType = initialState, action: ActionsTypes):DialogsPageType => {
+const DialogsReducer = (state: DialogsPageType = initialState, action: ActionDispatchTypes):DialogsPageType => {
+
+    let stateCopy = {
+        ...state,
+        /*messages: [...state.messages]*/
+    }
+
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY:
-            state.newMessageBody = action.body
-            break;
+            stateCopy.newMessageBody = action.body
+            return stateCopy
         case SEND_MESSAGE:
             let body = state.newMessageBody
-            state.newMessageBody = ''
-            state.messageData.push({id: 7, message: body})
-            break;
+            stateCopy.messages.push({id: v1(), message: body})
+            body = ''
+            return stateCopy
     }
-    return state
+    return stateCopy
 };
 
 export default DialogsReducer;
