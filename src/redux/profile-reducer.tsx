@@ -1,5 +1,6 @@
 import React from 'react';
 import {postPropsType} from "./state";
+import {ActionDispatchTypes} from "./redux-store";
 
 export const ADD_POST = "ADD-POST"
 export const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
@@ -30,42 +31,33 @@ export type ActionsTypes =
     ReturnType<typeof updateNewPostTextAC> |
     ReturnType<typeof addPostAC>
 
-export type profilePagePropsType = {
-    posts: postPropsType[]
-    newPostText: string
-}
-
-export type postType = {
-    id: number
-    message: string
-    likesCount: number
-}
-
-const postData: Array<postType> = [
-    {id: 1, message: 'Hi, how are you?', likesCount: 2},
-    {id: 2, message: 'Its the first post', likesCount: 2},
-    {id: 3, message: 'Like dont see you', likesCount: 2}
-]
-
 const initialState = {
-    postData: postData,
-    newPostText: 'IT-TI',
+    posts: [
+        {id: 1, message: 'Hi, how are you?', likesCount: 2},
+        {id: 2, message: 'Its the first post', likesCount: 2},
+        {id: 3, message: 'Like dont see you', likesCount: 2}
+    ],
+    newPostText: '',
 }
 
 export type ProfilePageType = typeof initialState
 
-const ProfileReducer = (state:ProfilePageType=initialState, action: ActionsTypes):ProfilePageType => {
+const ProfileReducer = (state:ProfilePageType=initialState, action: ActionDispatchTypes):ProfilePageType => {
     switch (action.type) {
-        case ADD_POST:
-            let newPost = {id: 4, message: 'new', likesCount: 0}
-            state.postData.push(newPost)
-            state.newPostText = ''
-            break;
-        case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newText
-            break;
+        case ADD_POST:{
+            let newPost = {id: 4, message: state.newPostText, likesCount: 0}
+            let stateCopy = {...state}
+            stateCopy.posts = [...state.posts]
+            stateCopy.posts.push(newPost)
+            stateCopy.newPostText = ''
+            return stateCopy
     }
-return state
-};
+        case UPDATE_NEW_POST_TEXT:{
+            let stateCopy = {...state}
+            stateCopy.newPostText = action.newPost
+            return stateCopy
+    }
+default: return state
+}};
 
 export default ProfileReducer;
