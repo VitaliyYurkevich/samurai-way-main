@@ -13,10 +13,9 @@ export type updateNewPostTextType = {
     newPost:string
 }
 
-export const addPostAC = (postText: string) => {
+export const addPostAC = () => {
     return {
         type: ADD_POST,
-        postMessage: postText
     } as const
 }
 export const updateNewPostTextAC = (newText: string) => {
@@ -58,7 +57,7 @@ export type ProfilePageType = typeof initialState
 const ProfileReducer = (state:ProfilePageType=initialState, action: ActionsTypes):ProfilePageType => {
     switch (action.type) {
         case ADD_POST:
-            let newPost = {id: 4, message: action.postMessage, likesCount: 0}
+            let newPost = {id: 4, message: 'new', likesCount: 0}
             state.postData.push(newPost)
             state.newPostText = ''
             break;

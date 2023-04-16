@@ -3,13 +3,14 @@ import classes from './Dialogs.module.css'
 import DialogsItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {DialogsPageType} from "../../redux/dialogs-reducer";
+import {DialogsPropsType} from "./DialogsContainer";
 
-type DialogsPropsType = {
+/*type DialogsPropsType = {
     newMessageBody: (body: string) => void
     sendMessage: ()=>void
     messagePage: DialogsPageType
 
-}
+}*/
 
 function Dialogs(props: DialogsPropsType) {
 
@@ -26,7 +27,7 @@ function Dialogs(props: DialogsPropsType) {
     }
     let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let body = e.currentTarget.value
-        props.newMessageBody(body)
+        props.updateNewMessageBody(body)
     }
 
     return (

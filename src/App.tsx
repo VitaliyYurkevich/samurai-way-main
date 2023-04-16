@@ -12,7 +12,7 @@ import {AppStateType, store} from "./redux/redux-store";
 
 
 
-const App = (props:AppStateType) => {
+const App = (props:any) => {
     debugger
     /*const state = props.getState()*/
 
@@ -22,11 +22,9 @@ const App = (props:AppStateType) => {
                 <Header/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-                    <Route path={'/dialogs'} render={() => <DialogsContainer   store={store}
-                                                                               newMessageBody={() => {}}
-                                                                             messagePage={props.messagesPage}
-                        /*profilePage={state.profilePage}
-                        messagesPage={state.messagesPage}*/
+                    <Route path={'/dialogs'} render={() => <DialogsContainer
+                        store={store}
+                        messagePage={props.messagePage}
                     />
                     }/>
                     <Route path={'/profile'} render={() => <Profile/>}/>

@@ -1,14 +1,47 @@
 import React from "react";
-import classes from './MyPosts.module.css';
-import {StorePropsType} from "../../../redux/state";
-import {addPostAC, updateNewPostTextAC} from "../../../redux/profile-reducer";
+import {addPostAC, ProfilePageType} from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
 import {AppStateType} from "../../../redux/redux-store";
+import {connect} from "react-redux";
+import {Dispatch} from "redux";
+import {updateNewMessageBodyAC} from "../../../redux/dialogs-reducer";
+
+
+export type MyPostsPropsType = mapDispatchToPropsType & mapStateToPropsType
 
 
 
+let mapStateToProps = (state: AppStateType) => {
+    return{
+        profilePage: state.profilePage
+    }
+}
 
+let mapDispatchToProps = (dispatch: Dispatch):mapDispatchToPropsType => {
+    return{
+        addPost: () => {
+            dispatch(addPostAC())
+        },
+        updateNewPostText: (text: string) => {
+            dispatch(updateNewMessageBodyAC(text))
+        }
+    }
+}
 
+ type mapDispatchToPropsType = {
+    addPost: () => void
+    updateNewPostText: (text:string) => void
+}
+
+ type mapStateToPropsType = {
+    profilePage: ProfilePageType
+}
+
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
+
+export default MyPostsContainer
+
+/*
 function MyPostsContainer() {
 
     return (
@@ -20,16 +53,16 @@ function MyPostsContainer() {
 
                         store.dispatch(addPostAC(store.getState().profilePage.newPostText))
 
-                        /*if (newPostElement.current?.value) {
+                        /!*if (newPostElement.current?.value) {
                             props.dispatch({type: "ADD-POST", postMessage: props.newPostText})
                             /!*props.dispatch.bind(newPostElement.current?.value)*!/
                             newPostElement.current.value = ''
-                        }*/
+                        }*!/
 
                     }
                     const onPostChange = (text: string) => {
 
-                        /*props.updateNewPostText(e.currentTarget.value)*/
+                        /!*props.updateNewPostText(e.currentTarget.value)*!/
                         store.dispatch(updateNewPostTextAC(text))
                     }
 
@@ -48,10 +81,7 @@ function MyPostsContainer() {
         </div>
     )
 }
-
-const Supe
-
+*/
 
 
 
-export default MyPostsContainer
