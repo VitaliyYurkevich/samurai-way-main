@@ -1,10 +1,10 @@
 import React from "react";
-import {addPostAC, ProfilePageType, updateNewPostTextAC} from "../../../redux/profile-reducer";
+import {addPostAC, updateNewPostTextAC} from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
 import {AppStateType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
-import {updateNewMessageBodyAC} from "../../../redux/dialogs-reducer";
+
 
 
 /*export type MyPostsPropsType = mapDispatchToPropsType & mapStateToPropsType*/
