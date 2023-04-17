@@ -3,7 +3,6 @@ import classes from './Dialogs.module.css'
 import DialogsItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {DialogsPageType} from "../../redux/dialogs-reducer";
-import {DialogsPropsType} from "./DialogsContainer";
 import {v1} from "uuid";
 
 /*type DialogsPropsType = {
@@ -13,10 +12,18 @@ import {v1} from "uuid";
 
 }*/
 
+export type DialogsPropsType = {
+    messagePage: DialogsPageType
+    sendMessage: ()=>void
+    updateNewMessageBody: (newMessageBody: string) => void
+}
+
+
+
 function Dialogs(props: DialogsPropsType) {
 
-    let newMessageBody = props.messagePage.newMessageBody
-    let dialogsElements = props.messagePage.dialogs.map(d => <DialogsItem name={d.name} id={v1()}/>)
+
+    let dialogsElements = props.messagePage.dialogs.map(d => <DialogsItem key={d.id} name={d.name} id={v1()}/>)
     let messagesElements = props.messagePage.messages.map((m) => {
         return (
             <Message message={m.message}/>
@@ -29,9 +36,7 @@ function Dialogs(props: DialogsPropsType) {
     let onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         //let body = e.currentTarget.value
         //props.updateNewMessageBody(body)
-
-        newMessageBody = e.currentTarget.value
-        props.updateNewMessageBody(newMessageBody)
+        props.updateNewMessageBody(e.currentTarget.value)
     }
 
     return (
@@ -45,7 +50,7 @@ function Dialogs(props: DialogsPropsType) {
                 </div>
                 <div>
                     <div><textarea placeholder='Enter your message'
-                                   value={newMessageBody}
+                                   value={props.messagePage.newMessageBody}
                                    onChange={onNewMessageChange}
                     >
                     </textarea></div>
