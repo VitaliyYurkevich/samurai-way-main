@@ -32,9 +32,7 @@ let mapDispatchToProps = (dispatch: Dispatch):mapDispatchToPropsType => {
     updateNewPostText: (text:string) => void
 }
 
- type mapStateToPropsType = {
-    profilePage: ProfilePageType
-}
+
 
 const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts)
 
