@@ -4,6 +4,7 @@ import DialogsItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {DialogsPageType} from "../../redux/dialogs-reducer";
 import {v1} from "uuid";
+import {connect} from "react-redux";
 
 /*type DialogsPropsType = {
     newMessageBody: (body: string) => void
@@ -13,7 +14,7 @@ import {v1} from "uuid";
 }*/
 
 export type DialogsPropsType = {
-    messagePage: DialogsPageType
+    dialogsPage: DialogsPageType
     sendMessage: ()=>void
     updateNewMessageBody: (newMessageBody: string) => void
 }
@@ -23,8 +24,8 @@ export type DialogsPropsType = {
 function Dialogs(props: DialogsPropsType) {
 
 
-    let dialogsElements = props.messagePage.dialogs.map(d => <DialogsItem key={d.id} name={d.name} id={v1()}/>)
-    let messagesElements = props.messagePage.messages.map((m) => {
+    let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogsItem key={d.id} name={d.name} id={v1()}/>)
+    let messagesElements = props.dialogsPage.messages.map((m) => {
         return (
             <Message message={m.message}/>
         )
@@ -50,7 +51,7 @@ function Dialogs(props: DialogsPropsType) {
                 </div>
                 <div>
                     <div><textarea placeholder='Enter your message'
-                                   value={props.messagePage.newMessageBody}
+                                   value={props.dialogsPage.newMessageBody}
                                    onChange={onNewMessageChange}
                     >
                     </textarea></div>
