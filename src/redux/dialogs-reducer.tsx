@@ -1,14 +1,10 @@
 import React from 'react';
-import {addPostAC, updateNewPostTextAC} from "./profile-reducer";
 import {ActionDispatchTypes} from "./redux-store";
 import {v1} from "uuid";
 
-const SEND_MESSAGE = "ADD-TEXT"
-const UPDATE_NEW_MESSAGE_BODY = "UPDATE-NEW-MESSAGE-BODY"
+export const SEND_MESSAGE = "ADD-TEXT"
+export const UPDATE_NEW_MESSAGE_BODY = "UPDATE-NEW-MESSAGE-BODY"
 
-export type ActionsTypes =
-    ReturnType<typeof updateNewMessageBodyAC> |
-    ReturnType<typeof sendMessageAC>
 
 export type  addTextType = {
     type: typeof SEND_MESSAGE
