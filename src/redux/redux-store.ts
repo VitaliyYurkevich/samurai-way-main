@@ -11,7 +11,7 @@ export type ActionDispatchTypes = addTextType | addPostType | updateNewMessageTe
 
 let RootReducer = combineReducers({
     profilePage: ProfileReducer,
-    messagesPage: DialogsReducer,
+    dialogsPage: DialogsReducer,
 
 
 })

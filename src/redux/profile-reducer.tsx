@@ -20,10 +20,10 @@ export const addPostAC = () => {
         type: ADD_POST,
     } as const
 }
-export const updateNewPostTextAC = (newText: string) => {
+export const updateNewPostTextAC = (newPost: string) => {
     return {
         type: UPDATE_NEW_POST_TEXT,
-        newText: newText
+        newPost: newPost
     } as const
 
 }
@@ -34,7 +34,7 @@ const initialState = {
         {id: v1(), message: 'Its the first post', likesCount: 2},
         {id: v1(), message: 'Like dont see you', likesCount: 2}
     ],
-    newPostText: 'hello',
+    newPostText: 'asdasda'
 }
 
 export type ProfilePageType = typeof initialState
@@ -45,8 +45,7 @@ const ProfileReducer = (state:ProfilePageType=initialState, action: ActionDispat
             return{
                 ...state,
                 newPostText: '',
-                posts: [...state.posts, {id: v1(), message: state.newPostText, likesCount: 0}],
-
+                posts: [...state.posts, {id: v1(), message: state.newPostText, likesCount: 0}]
             }
     }
         case UPDATE_NEW_POST_TEXT:
@@ -57,7 +56,8 @@ const ProfileReducer = (state:ProfilePageType=initialState, action: ActionDispat
 
 default:
     return state
-}};
+}
+};
 
 
 
