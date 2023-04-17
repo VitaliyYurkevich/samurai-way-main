@@ -8,14 +8,14 @@ import {Provider} from "react-redux";
 
 
 
-
+{/*dispatch={store.dispatch.bind(store)}*/}
 
 export let rerenderEntireTree = () => {
 
     ReactDOM.render(
         <BrowserRouter>
             <Provider  store={store}>
-                <App store={store.getState()} dispatch={store.dispatch.bind(store)} />
+                <App store={store.getState()} />
             </Provider>
 
         </BrowserRouter>, document.getElementById('root')
