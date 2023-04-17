@@ -64,11 +64,10 @@ const DialogsReducer = (state: DialogsPageType = initialState, action: ActionDis
             }
 
         case SEND_MESSAGE:
-            let body = state.newMessageBody
             return{
                 ...state,
                 newMessageBody: '',
-                messages: [...state.messages, {id: v1(), message: body}]
+                messages: [...state.messages, {id: v1(), message: state.newMessageBody}]
         }
         default:
             return state
