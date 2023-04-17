@@ -1,7 +1,7 @@
 import React from 'react';
-import {postPropsType} from "./state";
 import {ActionDispatchTypes} from "./redux-store";
 import post from "../components/Profile/MyPosts/Post/Post";
+import {v1} from "uuid";
 
 export const ADD_POST = "ADD-POST"
 export const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
@@ -28,15 +28,11 @@ export const updateNewPostTextAC = (newText: string) => {
 
 }
 
-export type ActionsTypes =
-    ReturnType<typeof updateNewPostTextAC> |
-    ReturnType<typeof addPostAC>
-
 const initialState = {
     posts: [
-        {id: 1, message: 'Hi, how are you?', likesCount: 2},
-        {id: 2, message: 'Its the first post', likesCount: 2},
-        {id: 3, message: 'Like dont see you', likesCount: 2}
+        {id: v1(), message: 'Hi, how are you?', likesCount: 2},
+        {id: v1(), message: 'Its the first post', likesCount: 2},
+        {id: v1(), message: 'Like dont see you', likesCount: 2}
     ],
     newPostText: 'hello',
 }
@@ -49,7 +45,7 @@ const ProfileReducer = (state:ProfilePageType=initialState, action: ActionDispat
             return{
                 ...state,
                 newPostText: '',
-                posts: [...state.posts, {id: 4, message: state.newPostText, likesCount: 0}],
+                posts: [...state.posts, {id: v1(), message: state.newPostText, likesCount: 0}],
 
             }
     }
@@ -59,7 +55,11 @@ const ProfileReducer = (state:ProfilePageType=initialState, action: ActionDispat
                 newPostText: action.newPost
             }
 
-default: return state
+default:
+    return state
 }};
+
+
+
 
 export default ProfileReducer;

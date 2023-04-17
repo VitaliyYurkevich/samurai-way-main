@@ -1,7 +1,8 @@
 import React, {ChangeEvent, MouseEventHandler, RefObject, useState} from "react";
 import classes from './MyPosts.module.css';
 import Post from "./Post/Post";
-import {MyPostsPropsType} from "./MyPostsContainer";
+import {ProfilePageType} from "../../../redux/profile-reducer";
+
 
 
 /*
@@ -15,6 +16,11 @@ type MyPostsPropsType = {
 }
 */
 
+export type MyPostsPropsType = {
+    profilePage: ProfilePageType
+    addPost: () => void
+    updateNewPostText: (text: string) => void
+}
 
 function MyPosts(props: MyPostsPropsType) {
 
@@ -35,9 +41,7 @@ function MyPosts(props: MyPostsPropsType) {
     }
 
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-
-        let text = e.currentTarget.value
-        props.updateNewPostText(text)
+        props.updateNewPostText(e.currentTarget.value)
 
     }
 

@@ -79,7 +79,7 @@ import DialogsReducer, {sendMessageAC, updateNewMessageBodyAC} from "./dialogs-r
   /*  }
 }
 */
-export type StorePropsType = {
+ type StorePropsType = {
     _state: statePropsType
     callSubscriber: (state: statePropsType) => void
     addPost: (postMessage: string) => void
@@ -103,34 +103,34 @@ export type ActionsTypes = ReturnType<typeof addPostAC> |
     ReturnType<typeof sendMessageAC>
 */
 
-export type dialogsPropsType = {
+ type dialogsPropsType = {
     id: number
     name: string
 }
 
-export type messagesPropsType = {
+ type messagesPropsType = {
     id: number
     message: string
 }
 
-export type postPropsType = {
+ type postPropsType = {
     id: number
     message: string
     likesCount: number
 }
 
-export type profilePagePropsType = {
+ type profilePagePropsType = {
     posts: postPropsType[]
     newPostText: string
 }
 
-export type dialogsPagePropsType = {
+ type dialogsPagePropsType = {
     dialogs: dialogsPropsType[]
     messages: messagesPropsType[]
     newMessageBody: string
 }
 
-export type statePropsType = {
+ type statePropsType = {
     profilePage: profilePagePropsType
     dialogsPage: dialogsPagePropsType
 }

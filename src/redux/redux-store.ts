@@ -1,4 +1,4 @@
-import {combineReducers, createStore, legacy_createStore, Store} from "redux";
+import {combineReducers, legacy_createStore} from "redux";
 import ProfileReducer, {addPostType, updateNewPostTextType} from "./profile-reducer";
 import DialogsReducer, {addTextType, updateNewMessageTextType} from "./dialogs-reducer";
 
