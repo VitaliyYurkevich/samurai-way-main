@@ -1,6 +1,7 @@
 import React from 'react';
 import {postPropsType} from "./state";
 import {ActionDispatchTypes} from "./redux-store";
+import post from "../components/Profile/MyPosts/Post/Post";
 
 export const ADD_POST = "ADD-POST"
 export const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
@@ -37,7 +38,7 @@ const initialState = {
         {id: 2, message: 'Its the first post', likesCount: 2},
         {id: 3, message: 'Like dont see you', likesCount: 2}
     ],
-    newPostText: '',
+    newPostText: 'hello',
 }
 
 export type ProfilePageType = typeof initialState
@@ -45,18 +46,19 @@ export type ProfilePageType = typeof initialState
 const ProfileReducer = (state:ProfilePageType=initialState, action: ActionDispatchTypes):ProfilePageType => {
     switch (action.type) {
         case ADD_POST:{
-            let newPost = {id: 4, message: state.newPostText, likesCount: 0}
-            let stateCopy = {...state}
-            stateCopy.posts = [...state.posts]
-            stateCopy.posts.push(newPost)
-            stateCopy.newPostText = ''
-            return stateCopy
+            return{
+                ...state,
+                newPostText: '',
+                posts: [...state.posts, {id: 4, message: state.newPostText, likesCount: 0}],
+
+            }
     }
-        case UPDATE_NEW_POST_TEXT:{
-            let stateCopy = {...state}
-            stateCopy.newPostText = action.newPost
-            return stateCopy
-    }
+        case UPDATE_NEW_POST_TEXT:
+            return{
+                ...state,
+                newPostText: action.newPost
+            }
+
 default: return state
 }};
 
