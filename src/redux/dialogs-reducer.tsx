@@ -55,22 +55,29 @@ export type DialogsPageType = typeof initialState
 
 const DialogsReducer = (state: DialogsPageType = initialState, action: ActionDispatchTypes):DialogsPageType => {
 
-    let stateCopy = {
+     /*= {
         ...state,
-        /*messages: [...state.messages]*/
-    }
+        /!*messages: [...state.messages]*!/
+    }*/
 
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY:
-            stateCopy.newMessageBody = action.body
-            return stateCopy
+            return {
+                ...state,
+                newMessageBody: action.body
+            }
+
         case SEND_MESSAGE:
             let body = state.newMessageBody
-            stateCopy.messages.push({id: v1(), message: body})
-            body = ''
-            return stateCopy
+            return{
+                ...state,
+                newMessageBody: '',
+                messages: [...state.messages, {id: v1(), message: body}]
+        }
+        default:
+            return state
     }
-    return stateCopy
+
 };
 
 export default DialogsReducer;
