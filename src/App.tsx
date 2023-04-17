@@ -15,7 +15,7 @@ type AppPropsType = {
     /*dispatch: (action:ActionDispatchTypes ) => void*/
 }
 
-const App = (props:AppPropsType) => {
+const App = () => {
     /*const state = props.getState()*/
 
     return (
@@ -24,7 +24,7 @@ const App = (props:AppPropsType) => {
                 <Header/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-                    <Route path={'/dialogs'} render={() => <DialogsContainer messagePage={props.store.messagesPage}  />}/>
+                    <Route path={'/dialogs'} render={() => <DialogsContainer />}/>
                     <Route path={'/profile'} render={() => <Profile/>}/>
                     <Route path={'/news'} render={() => <News/>}/>
                     <Route path={'/music'} render={() => <Music/>}/>
