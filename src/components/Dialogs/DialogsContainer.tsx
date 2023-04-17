@@ -18,6 +18,7 @@ let mapDispatchToProps = (dispatch: Dispatch):MapDispatchPropsType => {
         },
         sendMessage: () => {
             dispatch(sendMessageAC())
+
         }
     }
 }
