@@ -16,10 +16,10 @@ export type unfollowType = {
 }
 export type setUsersType = {
     type: typeof SET_USERS
-    users: Array<userType>
+    users: Array<usersType>
 }
 
-export type userType = {
+export type usersType = {
     id: string
     followed: boolean
     fullName: string
@@ -32,7 +32,7 @@ export type userType = {
 
 export const followAC = (userId: string) => ({type: FOLLOW, userId})
 export const unFollowAC = (userId: string) => ({type: UNFOLLOW, userId})
-export const setUsersAC = (users: string) => ({type: SET_USERS, users})
+export const setUsersAC = (users: Array<usersType>) => ({type: SET_USERS, users})
 
 
 const initialState = {
@@ -63,7 +63,7 @@ const initialState = {
 
 export type UsersPageType = typeof initialState
 
-const ProfileReducer = (state: UsersPageType = initialState, action: ActionDispatchTypes): UsersPageType => {
+const UsersReducer = (state: UsersPageType = initialState, action: ActionDispatchTypes): UsersPageType => {
     switch (action.type) {
         case FOLLOW: {
             return {
@@ -100,4 +100,4 @@ const ProfileReducer = (state: UsersPageType = initialState, action: ActionDispa
 
 
 
-        export default ProfileReducer;
+        export default UsersReducer;
