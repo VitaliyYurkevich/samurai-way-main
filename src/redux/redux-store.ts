@@ -1,12 +1,13 @@
 import {combineReducers, legacy_createStore} from "redux";
 import ProfileReducer, {addPostType, updateNewPostTextType} from "./profile-reducer";
 import DialogsReducer, {addTextType, updateNewMessageTextType} from "./dialogs-reducer";
+import {followType, setUsersType, unfollowType} from "./users-reducer";
 
 /*type RootReducerType = typeof RootReducer
 типизация заглушка???
 export type AppType = ReturnType<RootReducerType>*/
 
-export type ActionDispatchTypes = addTextType | addPostType | updateNewMessageTextType | updateNewPostTextType
+export type ActionDispatchTypes = addTextType | addPostType | updateNewMessageTextType | updateNewPostTextType | followType | unfollowType | setUsersType
 
 
 let RootReducer = combineReducers({
