@@ -9,6 +9,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {ActionDispatchTypes, AppStateType } from "./redux/redux-store";
+import UsersContainer from "./components/Users/UsersContainer";
 
 type AppPropsType = {
     store: AppStateType
@@ -29,7 +30,7 @@ const App = () => {
                     <Route path={'/news'} render={() => <News/>}/>
                     <Route path={'/music'} render={() => <Music/>}/>
                     <Route path={'/settings'} render={() => <Settings/>}/>
-                    <Route path={'/users'} render={() => <div> users</div>}/>
+                    <Route path={'/users'} render={() => <UsersContainer />}/>
                 </div>
             </div>
         </BrowserRouter>
