@@ -13,6 +13,7 @@ let mapStateToProps = (state: AppStateType) => {
 }
 
 let mapDispatchToProps = (dispatch: Dispatch):MapDispatchPropsType => {
+
     return {
         follow: (userId) => {
             dispatch(followAC(userId))
