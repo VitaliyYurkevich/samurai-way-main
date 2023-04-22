@@ -17,8 +17,7 @@ const Users = (props: usersPropsType) => {
 
    let getUsers = () => {
 
-       if (props.usersPage.users.length > 0) {
-           debugger
+       if (props.usersPage.users.length === 1) {
            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
                props.setUsers(response.data.items)
            })
