@@ -1,7 +1,13 @@
 import {combineReducers, createStore} from "redux";
 import ProfileReducer, {addPostType, updateNewPostTextType} from "./profile-reducer";
 import DialogsReducer, {addTextType, updateNewMessageTextType} from "./dialogs-reducer";
-import UsersReducer, {followType, setCurrentPageType, setUsersType, unfollowType} from "./users-reducer";
+import UsersReducer, {
+    followType,
+    setCurrentPageType, setIsFetchingType,
+    setTotalUsersCountType,
+    setUsersType,
+    unfollowType
+} from "./users-reducer";
 
 /*type RootReducerType = typeof RootReducer
 типизация заглушка???
@@ -15,7 +21,9 @@ export type ActionDispatchTypes =
     | followType
     | unfollowType
     | setUsersType
-|setCurrentPageType
+    | setCurrentPageType
+    | setTotalUsersCountType
+    | setIsFetchingType
 
 
 let RootReducer = combineReducers({
