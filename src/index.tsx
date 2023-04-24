@@ -36,3 +36,5 @@ store.subscribe(() => {
 /*
 store.subscribe(rerenderEntireTree)
 rerenderEntireTree()*/
+
+
