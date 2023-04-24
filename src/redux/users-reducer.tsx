@@ -6,7 +6,8 @@ export const FOLLOW = 'FOLLOW'
 export const UNFOLLOW = 'UNFOLLOW'
 export const SET_USERS = 'SET_USERS'
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
-
+export const SET_USERS_TOTAL_COUNT = 'SET_USERS_TOTAL_COUNT'
+export const TOGGLE_IS_FETCHING = 'SET_IS_FETCHING'
 
 export type followType = {
     type: typeof FOLLOW
@@ -26,6 +27,16 @@ export type setCurrentPageType = {
     currentPage: number
 }
 
+export type setTotalUsersCountType = {
+    type: typeof SET_USERS_TOTAL_COUNT
+    totalCount: number
+}
+
+export type setIsFetchingType = {
+    type: typeof TOGGLE_IS_FETCHING
+    isFetching: boolean
+}
+
 export type usersType = {
     id: string
     photos: string
@@ -41,9 +52,14 @@ export type usersType = {
 export const followAC = (userId: string) => ({type: FOLLOW, userId})
 export const unFollowAC = (userId: string) => ({type: UNFOLLOW, userId})
 export const setUsersAC = (users: Array<usersType>) => ({type: SET_USERS, users})
-export const setCurrentPageAC = (currentPage: number) => ({type: SET_CURRENT_PAGE, currentPage })
+export const setCurrentPageAC = (currentPage: number) => ({type: SET_CURRENT_PAGE, currentPage})
+export const setUsersTotalCountAC = (totalUsersCount: number) => ({
+    type: SET_USERS_TOTAL_COUNT,
+    totalCount: totalUsersCount
+})
+export const setIsFetchingAC = (isFetching: boolean) => ({type: TOGGLE_IS_FETCHING, isFetching})
 
-/*type initialStateType = {
+/*type usersType = {
     users: [
         {
             id: string
@@ -72,8 +88,8 @@ const initialState = {
     ],
     pageSize: 5,
     totalUsersCount: 0,
-    currentPage: 1
-
+    currentPage: 1,
+    isFetching: true
 
 }
 
@@ -106,17 +122,22 @@ const UsersReducer = (state: UsersPageType = initialState, action: ActionDispatc
 
         }
         case SET_USERS: {
-            return {...state, users: action.users }
+            return {...state, users: action.users}
 
         }
         case SET_CURRENT_PAGE: {
             return {...state, currentPage: action.currentPage}
         }
+        case SET_USERS_TOTAL_COUNT: {
+            return {...state, totalUsersCount: action.totalCount}
+        }
+        case TOGGLE_IS_FETCHING: {
+            return {...state, isFetching: action.isFetching}
+        }
         default:
             return state
     }
-    };
+};
 
 
-
-        export default UsersReducer;
+export default UsersReducer;
