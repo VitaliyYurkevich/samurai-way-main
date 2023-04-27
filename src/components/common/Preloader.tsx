@@ -8,5 +8,5 @@ const Preloader = () => {
         </div>
     );
 };
-
+console.log('asd')
 export default Preloader;
