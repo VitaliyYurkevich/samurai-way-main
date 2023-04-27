@@ -8,7 +8,7 @@ import {Dispatch} from "redux";
 
 
 /*export type MyPostsPropsType = mapDispatchToPropsType & mapStateToPropsType*/
-console.log('asd')
+
 
 let mapStateToProps = (state: AppStateType) => {
     return{
