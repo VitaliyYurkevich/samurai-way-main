@@ -24,7 +24,7 @@ export type usersAPIPropsType = {
     setTotalUsersCount: (totalCount: number) => void
     setIsFetching: (isFetching: boolean) => void
 }
-console.log('')
+
 class UsersAPIComponent extends React.Component<usersAPIPropsType> {
 
     /*getUsers = () => {
