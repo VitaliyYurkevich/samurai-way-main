@@ -1,7 +1,7 @@
 import React from 'react';
 import {v1} from "uuid";
 import {ActionDispatchTypes} from "./redux-store";
-console.log('')
+
 export const FOLLOW = 'FOLLOW'
 export const UNFOLLOW = 'UNFOLLOW'
 export const SET_USERS = 'SET_USERS'
