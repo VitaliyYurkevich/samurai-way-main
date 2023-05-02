@@ -39,7 +39,7 @@ function Dialogs(props: DialogsPropsType) {
         //props.updateNewMessageBody(body)
         props.updateNewMessageBody(e.currentTarget.value)
     }
-
+    console.log('')
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
