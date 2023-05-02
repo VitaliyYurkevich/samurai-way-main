@@ -8,7 +8,7 @@ export const SET_USERS = 'SET_USERS'
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 export const SET_USERS_TOTAL_COUNT = 'SET_USERS_TOTAL_COUNT'
 export const TOGGLE_IS_FETCHING = 'SET_IS_FETCHING'
-console.log('')
+
 export type followType = {
     type: typeof FOLLOW
     userId: string
@@ -92,7 +92,7 @@ const initialState = {
     isFetching: true
 
 }
-
+console.log('')
 export type UsersPageType = typeof initialState
 
 const UsersReducer = (state: UsersPageType = initialState, action: ActionDispatchTypes): UsersPageType => {
