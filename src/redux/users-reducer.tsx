@@ -92,7 +92,7 @@ const initialState = {
     isFetching: true
 
 }
-
+console.log('')
 export type UsersPageType = typeof initialState
 
 const UsersReducer = (state: UsersPageType = initialState, action: ActionDispatchTypes): UsersPageType => {
