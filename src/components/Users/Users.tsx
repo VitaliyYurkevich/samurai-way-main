@@ -2,6 +2,7 @@ import React from 'react';
 import styles from "./users.module.css";
 import {usersType} from "../../redux/users-reducer";
 
+console.log('')
 export type UsersPropsType = {
     follow: (userId: string) => void
     unFollow: (userId: string) => void
