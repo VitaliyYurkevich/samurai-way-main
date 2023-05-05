@@ -5,7 +5,7 @@ import {AppStateType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 
-
+console.log('')
 
 /*export type MyPostsPropsType = mapDispatchToPropsType & mapStateToPropsType*/
 
