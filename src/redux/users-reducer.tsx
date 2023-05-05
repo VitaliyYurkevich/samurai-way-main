@@ -58,7 +58,7 @@ export const setUsersTotalCountAC = (totalUsersCount: number) => ({
     totalCount: totalUsersCount
 })
 export const setIsFetchingAC = (isFetching: boolean) => ({type: TOGGLE_IS_FETCHING, isFetching})
-
+console.log('')
 /*type usersType = {
     users: [
         {
