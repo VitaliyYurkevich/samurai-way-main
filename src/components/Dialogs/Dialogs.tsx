@@ -5,7 +5,7 @@ import Message from "./Message/Message";
 import {DialogsPageType} from "../../redux/dialogs-reducer";
 import {v1} from "uuid";
 import {connect} from "react-redux";
-
+console.log('')
 /*type DialogsPropsType = {
     newMessageBody: (body: string) => void
     sendMessage: ()=>void
