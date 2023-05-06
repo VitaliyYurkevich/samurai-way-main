@@ -25,7 +25,7 @@ export type ActionDispatchTypes =
     | setTotalUsersCountType
     | setIsFetchingType
 
-console.log('')
+
 let RootReducer = combineReducers({
     profilePage: ProfileReducer,
     dialogsPage: DialogsReducer,
