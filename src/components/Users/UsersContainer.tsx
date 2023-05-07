@@ -14,7 +14,7 @@ import axios from "axios";
 import Users from "./Users";
 import preloader from "../../assets/preloader.svg"
 import Preloader from "../common/Preloader";
-console.log('')
+
 export type usersAPIPropsType = {
     usersPage: UsersPageType
     follow: (userId: string) => void
