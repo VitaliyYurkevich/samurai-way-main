@@ -5,6 +5,13 @@ import {v1} from "uuid";
 
 export const ADD_POST = "ADD-POST"
 export const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+export const SET_USER_PROFILE = "SET_USER_PROFILE"
+
+export type setUserProfileType = {
+    type: typeof SET_USER_PROFILE
+    profile: string
+}
+
 
 export type addPostType = {
     type: typeof ADD_POST
@@ -12,7 +19,7 @@ export type addPostType = {
 
 export type updateNewPostTextType = {
     type: typeof UPDATE_NEW_POST_TEXT,
-    newPost:string
+    newPost: string
 }
 
 export const addPostAC = () => {
@@ -28,38 +35,49 @@ export const updateNewPostTextAC = (newPost: string) => {
 
 }
 
+export const setUserProfileAC = (profile: string) => {
+    return {
+        type: SET_USER_PROFILE,
+        profile: profile
+    } as const
+}
+
 const initialState = {
     posts: [
         {id: v1(), message: 'Hi, how are you?', likesCount: 2},
         {id: v1(), message: 'Its the first post', likesCount: 2},
         {id: v1(), message: 'Like dont see you', likesCount: 2}
     ],
-    newPostText: 'asdasda'
+    newPostText: 'asdasda',
+    profile: ''
 }
 
 export type ProfilePageType = typeof initialState
 
-const ProfileReducer = (state:ProfilePageType=initialState, action: ActionDispatchTypes):ProfilePageType => {
+const ProfileReducer = (state: ProfilePageType = initialState, action: ActionDispatchTypes): ProfilePageType => {
     switch (action.type) {
-        case ADD_POST:{
-            return{
+        case ADD_POST: {
+            return {
                 ...state,
                 newPostText: '',
                 posts: [...state.posts, {id: v1(), message: state.newPostText, likesCount: 0}]
             }
-    }
+        }
         case UPDATE_NEW_POST_TEXT:
-            return{
+            return {
                 ...state,
                 newPostText: action.newPost
             }
+        case SET_USER_PROFILE:
+            return {
+                ...state,
+                profile: action.profile
+            }
 
-default:
-    return state
-}
+        default:
+            return state
+    }
 };
-
-
 
 
 export default ProfileReducer;
