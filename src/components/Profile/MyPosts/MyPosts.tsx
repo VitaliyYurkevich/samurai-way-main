@@ -4,7 +4,7 @@ import Post from "./Post/Post";
 import {ProfilePageType} from "../../../redux/profile-reducer";
 
 
-console.log('')
+
 /*
 type MyPostsPropsType = {
 
