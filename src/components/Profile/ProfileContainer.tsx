@@ -12,7 +12,7 @@ export type ProfileContainerPropsType = {
 
 
 
-class ProfileContainerComponent extends React.Component<any>{
+class ProfileContainerComponent extends React.Component<ProfileContainerPropsType>{
 
     componentDidMount() {
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
@@ -45,7 +45,7 @@ let mapStateToProps = (state: AppStateType) => {
 const ProfileContainer =  connect(mapStateToProps, {
     //addPost: addPostAC,
    // updateNewPostText: updateNewPostTextAC,
-    setUserProfile: setUserProfileAC
+    setUsersProfile: setUserProfileAC
 }
 )(ProfileContainerComponent)
 
