@@ -1,5 +1,5 @@
 import {combineReducers, createStore} from "redux";
-import ProfileReducer, {addPostType, updateNewPostTextType} from "./profile-reducer";
+import ProfileReducer, {addPostType, setUserProfileType, updateNewPostTextType} from "./profile-reducer";
 import DialogsReducer, {addTextType, updateNewMessageTextType} from "./dialogs-reducer";
 import UsersReducer, {
     followType,
@@ -24,6 +24,7 @@ export type ActionDispatchTypes =
     | setCurrentPageType
     | setTotalUsersCountType
     | setIsFetchingType
+    | setUserProfileType
 
 
 let RootReducer = combineReducers({
