@@ -3,11 +3,19 @@ import Profile from "./Profile";
 import axios from "axios";
 import {connect} from "react-redux";
 import {addPostAC, setUserProfileAC, updateNewPostTextAC} from "../../redux/profile-reducer";
+import {AppStateType} from "../../redux/redux-store";
+import {UsersPageType} from "../../redux/users-reducer";
 
-class ProfileContainer extends React.Component<any, any>{
+export type ProfileContainerComponentPropsType = {
+    usersPage: UsersPageType
+    setUsersProfile: (profile: string) => void
+}
+
+
+
+class ProfileContainerComponent extends React.Component<ProfileContainerComponentPropsType>{
 
     componentDidMount() {
-        this.props.setIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
             .then(response => {
                 this.props.setUsersProfile(response.data)
@@ -17,17 +25,27 @@ class ProfileContainer extends React.Component<any, any>{
     render() {
         return(
             <div>
-                <Profile />
+                <Profile  />
             </div>
         )
     }
 }
 
 
-let mapStateToProps = () => {
-
+let mapStateToProps = (state: AppStateType) => {
+    return{
+        profile: state.profilePage
+    }
 }
 
 
 
-export default  connect(mapStateToProps, {addPostAC,updateNewPostTextAC,setUserProfileAC })(ProfileContainer)
+
+const ProfileContainer =  connect(mapStateToProps, {
+    addPost: addPostAC,
+    updateNewPostText: updateNewPostTextAC,
+    setUserProfile: setUserProfileAC
+}
+)(ProfileContainerComponent)
+
+export default ProfileContainer
