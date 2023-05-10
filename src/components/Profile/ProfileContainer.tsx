@@ -2,12 +2,12 @@ import React from "react";
 import Profile from "./Profile";
 import axios from "axios";
 import {connect} from "react-redux";
-import {addPostAC, setUserProfileAC, updateNewPostTextAC} from "../../redux/profile-reducer";
+import {addPostAC, ProfilePageType, setUserProfileAC, updateNewPostTextAC} from "../../redux/profile-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import {UsersPageType} from "../../redux/users-reducer";
 
 export type ProfileContainerComponentPropsType = {
-    usersPage: UsersPageType
+    profilePage: ProfilePageType
     setUsersProfile: (profile: string) => void
 }
 
