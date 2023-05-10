@@ -120,6 +120,14 @@ type MapDispatchPropsType = {
     setIsFetching: (isFetching: boolean) => void
 }
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent)
+const UsersContainer = connect(mapStateToProps, {
+        follow: followAC,
+        unFollow: unFollowAC,
+        setUsers: setUsersAC,
+        setCurrentPage: setCurrentPageAC,
+        setTotalUsersCount: setUsersTotalCountAC,
+        setIsFetching: setIsFetchingAC
+    }
+)(UsersAPIComponent)
 
 export default UsersContainer
