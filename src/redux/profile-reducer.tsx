@@ -49,7 +49,25 @@ const initialState = {
         {id: v1(), message: 'Like dont see you', likesCount: 2}
     ],
     newPostText: 'asdasda',
-    profile: ''
+    profile: [
+        {aboutMe: '',
+            contacts: {facebook: '', website: '', vk: '', twitter: '', instagram: ''},
+            fullName: '',
+            lookingForAJob: true,
+            lookingForAJobDescription: '',
+            photos: {small: '', large: ''},
+            userId: 1}
+    ]
+}
+
+export type profileType = {
+    aboutMe: string
+    contacts: {facebook: string, website: null | string, vk: string, twitter: null | string, instagram: null | string}
+    fullName: string
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    photos: {small: string, large: string}
+    userId: number
 }
 
 export type ProfilePageType = typeof initialState
