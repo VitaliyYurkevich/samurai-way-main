@@ -8,9 +8,12 @@ import {store} from "../../redux/redux-store";
 
 function Profile() {
 
+    // @ts-ignore
+    // @ts-ignore
     return (
         <div>
-            <ProfileInfo profilePage={store.getState().profilePage} />
+
+               <ProfileInfo profile={store.getState().profilePage.profile} />
             <MyPostsContainer />  {/*dispatch={store.dispatch.bind(store)}
                      updateNewPostText={store.updateNewPostText.bind(store)}
                      newPostText={store._state.profilePage.newPostText}
