@@ -41,7 +41,7 @@ export const setUserProfileAC = (profile: string) => {
         profile: profile
     } as const
 }
-
+console.log('')
 const initialState = {
     posts: [
         {id: v1(), message: 'Hi, how are you?', likesCount: 2},
