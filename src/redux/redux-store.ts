@@ -8,7 +8,7 @@ import UsersReducer, {
     setUsersType,
     unfollowType
 } from "./users-reducer";
-console.log('')
+
 /*type RootReducerType = typeof RootReducer
 типизация заглушка???
 export type AppType = ReturnType<RootReducerType>*/
