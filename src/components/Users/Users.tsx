@@ -14,7 +14,6 @@ export type UsersPropsType = {
     users: Array<usersType>
 }
 
-console.log('')
 const Users = (props: UsersPropsType) => {
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
