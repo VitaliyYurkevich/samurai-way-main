@@ -11,7 +11,6 @@ export type setUserProfileType = {
     type: typeof SET_USER_PROFILE
     profile: any
 }
-console.log('')
 
 export type addPostType = {
     type: typeof ADD_POST
