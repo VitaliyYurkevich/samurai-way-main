@@ -11,7 +11,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {ActionDispatchTypes, AppStateType } from "./redux/redux-store";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-
+console.log('')
 type AppPropsType = {
     store: AppStateType
     /*dispatch: (action:ActionDispatchTypes ) => void*/
