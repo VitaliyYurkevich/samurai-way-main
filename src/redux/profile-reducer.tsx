@@ -2,7 +2,7 @@ import React from 'react';
 import {ActionDispatchTypes} from "./redux-store";
 import post from "../components/Profile/MyPosts/Post/Post";
 import {v1} from "uuid";
-console.log('')
+
 export const ADD_POST = "ADD-POST"
 export const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
 export const SET_USER_PROFILE = "SET_USER_PROFILE"
