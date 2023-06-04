@@ -11,6 +11,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {ActionDispatchTypes, AppStateType } from "./redux/redux-store";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 type AppPropsType = {
     store: AppStateType
@@ -23,7 +24,7 @@ const App = () => {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
-                <Header/>
+                <HeaderContainer/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Route path={'/dialogs'} render={() => <DialogsContainer />}/>
