@@ -2,18 +2,21 @@ import React from "react";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import {store} from "../../redux/redux-store";
+import {profileType} from "../../redux/profile-reducer";
 
 
+type ProfilePropsType = {
+    profile: profileType
+}
 
-
-function Profile() {
+function Profile(props: ProfilePropsType) {
 
     // @ts-ignore
     // @ts-ignore
     return (
         <div>
 
-               <ProfileInfo profile={store.getState().profilePage.profile} />
+               <ProfileInfo profile={props.profile}  />
             <MyPostsContainer />  {/*dispatch={store.dispatch.bind(store)}
                      updateNewPostText={store.updateNewPostText.bind(store)}
                      newPostText={store._state.profilePage.newPostText}
@@ -23,5 +26,5 @@ function Profile() {
         </div>
     )
 }
-
+//store.getState().profilePage.profile
 export default Profile
