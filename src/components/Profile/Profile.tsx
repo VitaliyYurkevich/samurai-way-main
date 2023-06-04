@@ -9,8 +9,8 @@ type ProfilePropsType = {
     profile: profileType
 }
 
-function Profile(props: ProfilePropsType) {
-
+function Profile(props: any) {
+debugger
     // @ts-ignore
     // @ts-ignore
     return (
