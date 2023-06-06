@@ -16,7 +16,7 @@ type MapStatePropsType = {
 }
 
 type MapDispatchPropsType = {
-    setUsersProfile: (profile: any) => void
+    setUserProfileAC: (profile: any) => void
 }
 
 type OwnPropsType = MapStatePropsType & MapDispatchPropsType
@@ -32,7 +32,7 @@ class ProfileContainerComponent extends React.Component<PropsType>{
         }
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
             .then(response => {
-                this.props.setUsersProfile(response.data)
+                this.props.setUserProfileAC(response.data)
             })
     }
 
@@ -58,6 +58,6 @@ let WithUrlDataContainerComponent = withRouter(ProfileContainerComponent)
 export default connect(mapStateToProps, {
         //addPost: addPostAC,
         // updateNewPostText: updateNewPostTextAC,
-        setUsersProfile: setUserProfileAC
+        setUserProfileAC
     }
 )(WithUrlDataContainerComponent)
