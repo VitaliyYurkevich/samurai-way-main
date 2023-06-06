@@ -3,8 +3,8 @@ import {ActionDispatchTypes} from "./redux-store";
 import post from "../components/Profile/MyPosts/Post/Post";
 import {v1} from "uuid";
 
-export const ADD_POST = "ADD-POST"
-export const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+export const ADD_POST = "ADD_POST"
+export const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT"
 export const SET_USER_PROFILE = "SET_USER_PROFILE"
 
 export type setUserProfileType = {
@@ -43,20 +43,10 @@ export const setUserProfileAC = (profile: string) => {
 
 const initialState = {
     posts: [
-        {id: v1(), message: 'Hi, how are you?', likesCount: 2},
-        {id: v1(), message: 'Its the first post', likesCount: 2},
-        {id: v1(), message: 'Like dont see you', likesCount: 2}
+        {id: v1(), message: 'Hi, how are you?', likesCount: 2}
     ],
-    newPostText: 'asdasda',
-    profile: [
-        {aboutMe: '',
-            contacts: {facebook: '', website: '', vk: '', twitter: '', instagram: ''},
-            fullName: '',
-            lookingForAJob: true,
-            lookingForAJobDescription: '',
-            photos: {small: '', large: ''},
-            userId: 1}
-    ]
+    newPostText: '',
+    profile: null
 }
 
 export type profileType = {
@@ -66,7 +56,7 @@ export type profileType = {
     lookingForAJob: boolean
     lookingForAJobDescription: string
     photos: {small: string, large: string}
-    userId: number
+    userId: string
 }
 
 export type ProfilePageType = typeof initialState
