@@ -10,9 +10,7 @@ type ProfilePropsType = {
 }
 
 function Profile(props: any) {
-debugger
-    // @ts-ignore
-    // @ts-ignore
+
     return (
         <div>
 
