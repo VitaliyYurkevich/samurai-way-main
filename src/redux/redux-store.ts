@@ -5,9 +5,10 @@ import UsersReducer, {
     followType,
     setCurrentPageType, setIsFetchingType,
     setTotalUsersCountType,
-    setUsersType,
+    setUsersType, toggleFollowingProgressType,
     unfollowType
 } from "./users-reducer";
+import authReducer, {setUserDataType} from "./auth-reducer";
 
 /*type RootReducerType = typeof RootReducer
 типизация заглушка???
@@ -25,12 +26,14 @@ export type ActionDispatchTypes =
     | setTotalUsersCountType
     | setIsFetchingType
     | setUserProfileType
-
+| setUserDataType
+|toggleFollowingProgressType
 
 let RootReducer = combineReducers({
     profilePage: ProfileReducer,
     dialogsPage: DialogsReducer,
     usersPage: UsersReducer,
+    auth: authReducer
 
 })
 
