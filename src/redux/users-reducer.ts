@@ -8,6 +8,7 @@ export const SET_USERS = 'SET_USERS'
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 export const SET_USERS_TOTAL_COUNT = 'SET_USERS_TOTAL_COUNT'
 export const TOGGLE_IS_FETCHING = 'SET_IS_FETCHING'
+export const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
 
 export type followType = {
     type: typeof FOLLOW
@@ -37,6 +38,12 @@ export type setIsFetchingType = {
     isFetching: boolean
 }
 
+export type toggleFollowingProgressType = {
+    type: typeof TOGGLE_IS_FOLLOWING_PROGRESS
+    isFetching: boolean
+    userId: number
+}
+
 export type usersType = {
     id: string
     photos: string
@@ -49,6 +56,10 @@ export type usersType = {
     }
 }
 
+export type followingProgressType = {
+    userId: number
+}
+
 export const followAC = (userId: string) => ({type: FOLLOW, userId})
 export const unFollowAC = (userId: string) => ({type: UNFOLLOW, userId})
 export const setUsersAC = (users: Array<usersType>) => ({type: SET_USERS, users})
@@ -58,6 +69,8 @@ export const setUsersTotalCountAC = (totalUsersCount: number) => ({
     totalCount: totalUsersCount
 })
 export const setIsFetchingAC = (isFetching: boolean) => ({type: TOGGLE_IS_FETCHING, isFetching})
+export const toggleFollowingProgressAC = (isFetching: boolean, userId: number) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId} as const)
+
 
 /*type usersType = {
     users: [
@@ -89,8 +102,8 @@ const initialState = {
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: true
-
+    isFetching: true,
+    followingInProgress: [] as Array<number>
 }
 
 export type UsersPageType = typeof initialState
@@ -133,6 +146,14 @@ const UsersReducer = (state: UsersPageType = initialState, action: ActionDispatc
         }
         case TOGGLE_IS_FETCHING: {
             return {...state, isFetching: action.isFetching}
+        }
+        case TOGGLE_IS_FOLLOWING_PROGRESS: {
+
+            return {
+                ...state, followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.userId]
+                    : state.followingInProgress.filter(id => id !== action.userId)
+            }
         }
         default:
             return state
