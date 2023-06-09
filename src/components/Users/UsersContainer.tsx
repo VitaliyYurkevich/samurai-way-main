@@ -4,11 +4,11 @@ import {AppStateType} from "../../redux/redux-store";
 import {Dispatch} from "redux";
 import {
     followAC,
-    setCurrentPageAC, setIsFetchingAC, setIsFetchingType,
+    setCurrentPageAC, toggleIsFetchingAC, setIsFetchingType,
     setUsersAC,
     setUsersTotalCountAC, toggleFollowingProgressAC,
     unFollowAC, UsersPageType,
-    usersType
+    usersType, getUserThunkCreator
 } from "../../redux/users-reducer";
 import axios from "axios";
 import Users from "./Users";
@@ -42,13 +42,7 @@ class UsersAPIComponent extends React.Component<usersAPIPropsType> {
     }*/
 
     componentDidMount() {
-        this.props.setIsFetching(true)
-        usersAPI.getUsers(this.props.usersPage.currentPage, this.props.usersPage.pageSize)
-            .then(data => {
-                this.props.setIsFetching(false)
-                this.props.setUsers(data.items)
-                this.props.setTotalUsersCount(data.totalCount)
-            })
+
     }
 
     onPageChanged = (pageNumber: number) => {
@@ -68,7 +62,7 @@ class UsersAPIComponent extends React.Component<usersAPIPropsType> {
                 {this.props.usersPage.isFetching ? <Preloader/> : null}
                 <Users followingInProgress={this.props.usersPage.followingInProgress}
                        toggleFollowingProgress={this.props.toggleFollowingProgress}
-                    totalUsersCount={this.props.usersPage.totalUsersCount}
+                       totalUsersCount={this.props.usersPage.totalUsersCount}
                        pageSize={this.props.usersPage.pageSize}
                        currentPage={this.props.usersPage.currentPage}
                        onPageChanged={this.onPageChanged}
@@ -112,11 +106,12 @@ let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
             dispatch(setUsersTotalCountAC(totalCount))
         },
         setIsFetching: (isFetching: boolean) => {
-            dispatch(setIsFetchingAC(isFetching))
+            dispatch(toggleIsFetchingAC(isFetching))
         },
         toggleFollowingProgress: (isFetching: boolean, userId: number) => {
             dispatch(toggleFollowingProgressAC(isFetching, userId))
-        }
+        },
+
     }
 }
 
@@ -136,8 +131,9 @@ const UsersContainer = connect(mapStateToProps, {
         setUsers: setUsersAC,
         setCurrentPage: setCurrentPageAC,
         setTotalUsersCount: setUsersTotalCountAC,
-        setIsFetching: setIsFetchingAC,
-        toggleFollowingProgress: toggleFollowingProgressAC
+        setIsFetching: toggleIsFetchingAC,
+        toggleFollowingProgress: toggleFollowingProgressAC,
+        getUserThunkCreator
     }
 )(UsersAPIComponent)
 
