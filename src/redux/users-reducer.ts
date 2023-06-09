@@ -1,6 +1,8 @@
 import React from 'react';
 import {v1} from "uuid";
 import {ActionDispatchTypes} from "./redux-store";
+import {usersAPI} from "../api/api";
+import any = jasmine.any;
 
 export const FOLLOW = 'FOLLOW'
 export const UNFOLLOW = 'UNFOLLOW'
@@ -68,7 +70,7 @@ export const setUsersTotalCountAC = (totalUsersCount: number) => ({
     type: SET_USERS_TOTAL_COUNT,
     totalCount: totalUsersCount
 })
-export const setIsFetchingAC = (isFetching: boolean) => ({type: TOGGLE_IS_FETCHING, isFetching})
+export const toggleIsFetchingAC = (isFetching: boolean) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const toggleFollowingProgressAC = (isFetching: boolean, userId: number) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId} as const)
 
 
@@ -159,6 +161,21 @@ const UsersReducer = (state: UsersPageType = initialState, action: ActionDispatc
             return state
     }
 };
+
+
+//export type ThunkDispatchType = typeof
+
+export const getUserThunkCreator = (usersPage: UsersPageType) => {
+    return (dispatch: any) => {
+        toggleIsFetchingAC(true)
+        usersAPI.getUsers(usersPage.currentPage, usersPage.pageSize)
+            .then(data => {
+                dispatch(toggleIsFetchingAC(false))
+                dispatch(setUsersAC(data.items))
+                dispatch(setUsersTotalCountAC(data.totalCount))
+            })
+    }
+}
 
 
 export default UsersReducer;
