@@ -26,7 +26,7 @@ export type usersAPIPropsType = {
     setIsFetching: (isFetching: boolean) => void
     toggleFollowingProgress: (isFetching: boolean, userId: number) => void
 }
-console.log('')
+
 
 class UsersAPIComponent extends React.Component<usersAPIPropsType> {
 
