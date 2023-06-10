@@ -13,7 +13,7 @@ import authReducer, {setUserDataType} from "./auth-reducer";
 /*type RootReducerType = typeof RootReducer
 типизация заглушка???
 export type AppType = ReturnType<RootReducerType>*/
-
+console.log('')
 export type ActionDispatchTypes =
     addTextType
     | addPostType
