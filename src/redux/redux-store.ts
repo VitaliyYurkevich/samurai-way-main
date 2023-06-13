@@ -10,11 +10,12 @@ import UsersReducer, {
 } from "./users-reducer";
 import authReducer, {setUserDataType} from "./auth-reducer";
 import thunkMiddleware from "redux-thunk"
+import {log} from "util";
 
 /*type RootReducerType = typeof RootReducer
 типизация заглушка???
 export type AppType = ReturnType<RootReducerType>*/
-
+console.log('')
 export type ActionDispatchTypes =
     addTextType
     | addPostType
