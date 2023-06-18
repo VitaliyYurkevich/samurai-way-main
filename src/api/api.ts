@@ -1,4 +1,5 @@
 import axios from "axios";
+import {setUserProfileAC} from "../redux/profile-reducer";
 
 
 const instance = axios.create({
@@ -18,11 +19,14 @@ export const usersAPI = {
             }
         )
     },
-    follow(userId = 1) {
+    follow(userId: number) {
         instance.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {})
     },
-    unfollow(userId = 1) {
+    unfollow(userId: number) {
      return instance.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`)
+    },
+    getProfile(userId: number) {
+        return axios.get("https://social-network.samuraijs.com/api/1.0/profile/" + userId)
     }
 }
 
