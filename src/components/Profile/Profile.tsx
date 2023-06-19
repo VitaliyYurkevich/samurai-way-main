@@ -9,7 +9,7 @@ type ProfilePropsType = {
     profile: profileType
 }
 
-function Profile(props: any) {
+function Profile(props: ProfilePropsType) {
 
     return (
         <div>
