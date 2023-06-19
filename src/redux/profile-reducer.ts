@@ -43,7 +43,7 @@ export const setUserProfileAC = (profile: string) => {
 
 const initialState = {
     posts: [
-        {id: v1(), message: 'Hi, how are you?', likesCount: 2}
+        {id: 1, message: 'Hi, how are you?', likesCount: 2}
     ],
     newPostText: '',
     profile: null
@@ -56,7 +56,7 @@ export type profileType = {
     lookingForAJob: boolean
     lookingForAJobDescription: string
     photos: {small: string, large: string}
-    userId: string
+    userId: number
 }
 
 export type ProfilePageType = typeof initialState
@@ -67,7 +67,7 @@ const ProfileReducer = (state: ProfilePageType = initialState, action: ActionDis
             return {
                 ...state,
                 newPostText: '',
-                posts: [...state.posts, {id: v1(), message: state.newPostText, likesCount: 0}]
+                posts: [...state.posts, {id: 1, message: state.newPostText, likesCount: 0}]
             }
         }
         case UPDATE_NEW_POST_TEXT:
