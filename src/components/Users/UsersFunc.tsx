@@ -1,5 +1,5 @@
 import React, {MouseEventHandler} from 'react';
-import {UsersPageType, usersType} from "../../redux/users-reducer";
+import {UsersPageType, UserType} from "../../redux/users-reducer";
 import {inspect} from "util";
 import styles from "./users.module.css"
 import {v1} from "uuid";
@@ -7,9 +7,9 @@ import axios from "axios";
 
 export type usersPropsType = {
     usersPage: UsersPageType
-    follow: (userId: string) => void
-    unFollow: (userId: string) => void
-    setUsers: (users: Array<usersType>) => void
+    follow: (userId: number) => void
+    unFollow: (userId: number) => void
+    setUsers: (users: Array<UserType>) => void
 }
 
 
@@ -59,7 +59,7 @@ const UsersFunc = (props: usersPropsType) => {
                 props.usersPage.users.map(u => <div key={u.id}>
                     <span>
                         <div>
-                            <img src={u.photos != null ? u.photos : '@'} className={styles.userPhoto}/>
+                            <img src={u.photos.small !== null ? u.photos.small : '@'} className={styles.userPhoto}/>
                         </div>
                         <div>
                             {u.followed
