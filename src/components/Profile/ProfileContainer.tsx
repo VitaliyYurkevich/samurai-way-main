@@ -6,9 +6,10 @@ import {addPostAC, ProfilePageType, setUserProfileAC, updateNewPostTextAC} from 
 import {AppStateType} from "../../redux/redux-store";
 import {UsersPageType} from "../../redux/users-reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
+import {usersAPI} from "../../api/api";
 
 type PathParamsType = {
-    userId: string
+    userId: number
 }
 
 type MapStatePropsType = {
@@ -21,6 +22,8 @@ type MapDispatchPropsType = {
 
 type OwnPropsType = MapStatePropsType & MapDispatchPropsType
 
+
+// @ts-ignore
 type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType
 
 class ProfileContainerComponent extends React.Component<PropsType>{
@@ -28,8 +31,13 @@ class ProfileContainerComponent extends React.Component<PropsType>{
     componentDidMount() {
         let userId = this.props.match.params.userId
         if(!userId) {
-            userId = '2'
+            userId = 2
         }
+        usersAPI.getProfile(userId).then( response => {
+            this.props.setUserProfileAC(response.data)
+            }
+        )
+
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
             .then(response => {
                 this.props.setUserProfileAC(response.data)
