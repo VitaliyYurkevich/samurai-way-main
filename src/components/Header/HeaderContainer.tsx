@@ -3,7 +3,7 @@ import Header from "./Header";
 import axios from "axios";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
-import {setAuthUserDataAC} from "../../redux/auth-reducer";
+import {getAuthUserDataTC, setAuthUserDataAC} from "../../redux/auth-reducer";
 import {authAPI} from "../../api/api";
 
 type MapStatePropsType = {
@@ -12,7 +12,7 @@ type MapStatePropsType = {
 }
 
 type MapDispatchPropsType = {
-    setAuthUserDataAC: (userId: null, email: null, login: null) => void
+    getAuthUserDataTC: () => void
 }
 
 type OwnPropsType = MapStatePropsType & MapDispatchPropsType
@@ -21,13 +21,7 @@ type OwnPropsType = MapStatePropsType & MapDispatchPropsType
 
 class HeaderContainer extends React.Component<OwnPropsType> {
     componentDidMount() {
-        authAPI.me()
-            .then(response => {
-                if(response.data.resultCode === 0) {
-                    let {userId, email, login} = response.data
-                    this.props.setAuthUserDataAC(userId, email, login)
-                }
-            })
+        this.props.getAuthUserDataTC()
     }
 
     render() {
@@ -47,4 +41,7 @@ const mapStateToProps = (state: AppStateType):MapStatePropsType => {
     }
 }
 
-export default connect(mapStateToProps, {setAuthUserDataAC} )(HeaderContainer)
+export default connect(mapStateToProps, {
+    setAuthUserDataAC,
+    getAuthUserDataTC
+} )(HeaderContainer)
