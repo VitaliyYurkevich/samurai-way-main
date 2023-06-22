@@ -2,6 +2,8 @@ import React from 'react';
 import {ActionDispatchTypes} from "./redux-store";
 import post from "../components/Profile/MyPosts/Post/Post";
 import {v1} from "uuid";
+import {Dispatch} from "redux";
+import {usersAPI} from "../api/api";
 
 export const ADD_POST = "ADD_POST"
 export const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT"
@@ -33,12 +35,17 @@ export const updateNewPostTextAC = (newPost: string) => {
     } as const
 
 }
-
 export const setUserProfileAC = (profile: string) => {
     return {
         type: SET_USER_PROFILE,
         profile: profile
     } as const
+}
+export const getUserProfileTC = (userId: number) => (dispatch: Dispatch) => {
+    usersAPI.getProfile(userId).then( response => {
+            dispatch(setUserProfileAC(response.data))
+        }
+    )
 }
 
 const initialState = {
