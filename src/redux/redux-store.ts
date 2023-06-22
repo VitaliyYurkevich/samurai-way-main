@@ -31,6 +31,7 @@ export type ActionDispatchTypes =
 | setUserDataType
 |toggleFollowingProgressType
 
+
 let RootReducer = combineReducers({
     profilePage: ProfileReducer,
     dialogsPage: DialogsReducer,
