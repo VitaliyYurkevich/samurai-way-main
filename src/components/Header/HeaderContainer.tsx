@@ -4,6 +4,7 @@ import axios from "axios";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
 import {setAuthUserDataAC} from "../../redux/auth-reducer";
+import {authAPI} from "../../api/api";
 
 type MapStatePropsType = {
     isAuth: boolean
@@ -20,9 +21,7 @@ type OwnPropsType = MapStatePropsType & MapDispatchPropsType
 
 class HeaderContainer extends React.Component<OwnPropsType> {
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-            withCredentials: true
-        })
+        authAPI.me()
             .then(response => {
                 if(response.data.resultCode === 0) {
                     let {userId, email, login} = response.data
