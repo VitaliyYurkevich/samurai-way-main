@@ -31,11 +31,10 @@ export const usersAPI = {
 }
 
 
+
 export const authAPI = {
     me () {
-        return instance.get(`auth/me`, {
-            withCredentials: true
-        })
+        return instance.get(`auth/me`, )
     }
 }
 
