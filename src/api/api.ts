@@ -20,16 +20,24 @@ export const usersAPI = {
         )
     },
     follow(userId: number) {
-        instance.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {})
+        instance.post(`follow/${userId}`, {})
     },
     unfollow(userId: number) {
-     return instance.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`)
+     return instance.delete(`follow/${userId}`)
     },
     getProfile(userId: number) {
-        return axios.get("https://social-network.samuraijs.com/api/1.0/profile/" + userId)
+        return instance.get("profile/" + userId)
     }
 }
 
+
+export const authAPI = {
+    me () {
+        return instance.get(`auth/me`, {
+            withCredentials: true
+        })
+    }
+}
 
 
 
