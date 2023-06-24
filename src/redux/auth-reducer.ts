@@ -21,7 +21,7 @@ let initialState = {
     login: null,
     isAuth: false
 }
-
+console.log('')
 const authReducer = (state = initialState, action: ActionDispatchTypes) => {
     switch (action.type) {
         case SET_USER_DATA:
