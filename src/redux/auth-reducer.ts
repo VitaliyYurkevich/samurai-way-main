@@ -15,6 +15,8 @@ export type setUserDataType = {
     }
 }
 
+//type DataType
+
 let initialState = {
     userId: null,
     email: null,
@@ -22,7 +24,10 @@ let initialState = {
     isAuth: false
 }
 
-const authReducer = (state = initialState, action: ActionDispatchTypes) => {
+export type AuthPageType = typeof initialState
+
+
+const authReducer = (state:AuthPageType = initialState, action: ActionDispatchTypes) => {
     switch (action.type) {
         case SET_USER_DATA:
             return {
