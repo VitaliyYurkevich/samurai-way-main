@@ -21,7 +21,7 @@ export type DialogsPropsType = {
     isAuth: boolean
 }
 
-
+console.log('')
 
 function Dialogs(props: DialogsPropsType) {
 
