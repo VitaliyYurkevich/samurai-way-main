@@ -4,7 +4,7 @@ import {UserType} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
 import axios from "axios";
 import {usersAPI} from "../../api/api";
-
+console.log('')
 
 export type UsersPropsType = {
     follow: (userId: number) => void
