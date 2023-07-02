@@ -4,7 +4,7 @@ import {authAPI} from "../api/api";
 
 
 export const SET_USER_DATA = 'SET_USER_DATA'
-console.log('')
+
 export type setUserDataType = {
     type: typeof SET_USER_DATA
     data: {
