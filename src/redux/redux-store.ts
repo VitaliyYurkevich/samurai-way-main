@@ -10,7 +10,7 @@ import UsersReducer, {
 } from "./users-reducer";
 import authReducer, {setUserDataType} from "./auth-reducer";
 import thunkMiddleware from "redux-thunk"
-import {log} from "util";
+
 console.log('')
 /*type RootReducerType = typeof RootReducer
 типизация заглушка???
