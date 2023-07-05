@@ -10,7 +10,7 @@ type MapStatePropsType = {
     isAuth: boolean
     login: null
 }
-
+console.log('')
 type MapDispatchPropsType = {
     getAuthUserDataTC: () => void
 }
