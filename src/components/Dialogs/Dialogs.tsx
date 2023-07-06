@@ -13,7 +13,7 @@ import {Redirect} from "react-router-dom";
     messagePage: DialogsPageType
 
 }*/
-console.log('')
+
 export type DialogsPropsType = {
     dialogsPage: DialogsPageType
     sendMessage: ()=>void
