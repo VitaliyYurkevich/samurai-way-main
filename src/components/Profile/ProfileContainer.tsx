@@ -17,7 +17,7 @@ type MapStatePropsType = {
     profile: any
     isAuth: boolean
 }
-console.log('')
+
 type MapDispatchPropsType = {
     getUserProfileTC: (userId: number) => void
 }
