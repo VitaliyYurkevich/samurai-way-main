@@ -2,6 +2,7 @@ import {ActionDispatchTypes} from "./redux-store";
 import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
 
+console.log('')
 
 export const SET_USER_DATA = 'SET_USER_DATA'
 
