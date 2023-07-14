@@ -8,7 +8,7 @@ import {UsersPageType} from "../../redux/users-reducer";
 import {Redirect, RouteComponentProps, withRouter} from "react-router-dom";
 import {usersAPI} from "../../api/api";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-
+console.log()
 type PathParamsType = {
     userId: number
 }
