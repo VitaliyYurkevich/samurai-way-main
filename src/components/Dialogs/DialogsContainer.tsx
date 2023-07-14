@@ -6,7 +6,7 @@ import {AppStateType} from "../../redux/redux-store";
 import {Dispatch} from "redux";
 import {Redirect} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-
+console.log()
 let mapStateToProps = (state: AppStateType) => {
 
     return {
