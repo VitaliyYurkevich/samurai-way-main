@@ -6,7 +6,7 @@ import {DialogsPageType} from "../../redux/dialogs-reducer";
 import {v1} from "uuid";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
-console.log()
+
 /*type DialogsPropsType = {
     newMessageBody: (body: string) => void
     sendMessage: ()=>void
