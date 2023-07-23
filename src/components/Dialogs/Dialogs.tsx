@@ -32,7 +32,7 @@ function Dialogs(props: DialogsPropsType) {
             <Message message={m.message}/>
         )
     })
-
+    console.log()
     let onSendMessageClick = () => {
         props.sendMessage()
     }
