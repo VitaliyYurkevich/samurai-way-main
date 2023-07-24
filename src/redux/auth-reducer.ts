@@ -23,7 +23,7 @@ let initialState = {
     login: null,
     isAuth: false
 }
-console.log()
+
 export type AuthPageType = typeof initialState
 
 
