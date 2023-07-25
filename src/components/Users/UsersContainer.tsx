@@ -14,6 +14,7 @@ import Users from "./Users";
 import preloader from "../../assets/preloader.svg"
 import Preloader from "../common/Preloader";
 import {usersAPI} from "../../api/api";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 export type mapStateToPropsType = {
     usersPage: UsersPageType
@@ -117,7 +118,7 @@ let mapStateToProps = (state: AppStateType) => {
     }
 }*/
 
-
+let withRedirect = withAuthRedirect(UsersAPIComponent)
 
 const UsersContainer = connect(mapStateToProps, {
         follow: followThunkCreator,
@@ -130,6 +131,8 @@ const UsersContainer = connect(mapStateToProps, {
        getUsers: getUserThunkCreator,
 
     }
-)(UsersAPIComponent)
+)(withRedirect)
+
+
 
 export default UsersContainer
