@@ -60,6 +60,8 @@ let mapStateToPropsForRedirect = (state: AppStateType):MapStateToPropsForRedirec
     }
 }
 
+AuthRedirectComponent = connect(mapStateToPropsForRedirect) (AuthRedirectComponent)
+
 let mapStateToProps = (state: AppStateType):MapStatePropsType => {
     return{
         profile: state.profilePage.profile,
