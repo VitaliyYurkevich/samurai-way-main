@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
-import {Dispatch} from "redux";
+import {compose, Dispatch} from "redux";
 import {
     followAC,
     setCurrentPageAC, toggleIsFetchingAC, setIsFetchingType,
@@ -118,6 +118,24 @@ let mapStateToProps = (state: AppStateType) => {
     }
 }*/
 
+
+export default compose<React.ComponentType>(
+    withAuthRedirect,
+    connect(mapStateToProps, {
+        follow: followThunkCreator,
+        unFollow: unfollowThunkCreator,
+        //setUsers: setUsersAC,
+        setCurrentPage: setCurrentPageAC,
+        // setTotalUsersCount: setUsersTotalCountAC,
+        // toggleIsFetching: toggleIsFetchingAC,
+        toggleFollowingProgress: toggleFollowingProgressAC,
+        getUsers: getUserThunkCreator,
+
+    } )
+) (UsersAPIComponent)
+
+/*
+
 let withRedirect = withAuthRedirect(UsersAPIComponent)
 
 const UsersContainer = connect(mapStateToProps, {
@@ -133,6 +151,5 @@ const UsersContainer = connect(mapStateToProps, {
     }
 )(withRedirect)
 
+*/
 
-
-export default UsersContainer
