@@ -9,6 +9,8 @@ import {Redirect, RouteComponentProps, withRouter} from "react-router-dom";
 import {usersAPI} from "../../api/api";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import any = jasmine.any;
+import {compose} from "redux";
+import exp from "constants";
 
 type PathParamsType = {
     userId: number
@@ -51,9 +53,6 @@ class ProfileContainerComponent extends React.Component<PropsType>{
         )
     }
 }
-
-let AuthRedirectComponent = withAuthRedirect(ProfileContainerComponent)
-
 let mapStateToProps = (state: AppStateType):MapStatePropsType => {
     return{
         profile: state.profilePage.profile,
@@ -61,7 +60,18 @@ let mapStateToProps = (state: AppStateType):MapStatePropsType => {
     }
 }
 
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, { getUserProfileTC: getUserProfileTC,}),
+    withRouter,
+    withAuthRedirect,
+)(ProfileContainerComponent)
 
+/*let AuthRedirectComponent = withAuthRedirect(ProfileContainerComponent)*/
+
+
+
+
+/*
 let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent)
 
 
@@ -71,4 +81,4 @@ export default connect(mapStateToProps, {
     getUserProfileTC: getUserProfileTC,
 
     }
-)(WithUrlDataContainerComponent)
+)(WithUrlDataContainerComponent)*/
