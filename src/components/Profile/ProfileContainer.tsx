@@ -8,7 +8,6 @@ import {UsersPageType} from "../../redux/users-reducer";
 import {Redirect, RouteComponentProps, withRouter} from "react-router-dom";
 import {usersAPI} from "../../api/api";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-import any = jasmine.any;
 import {compose} from "redux";
 import exp from "constants";
 
