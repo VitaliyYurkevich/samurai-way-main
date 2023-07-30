@@ -26,10 +26,22 @@ export const usersAPI = {
      return instance.delete(`follow/${userId}`)
     },
     getProfile(userId: number) {
-        return instance.get("profile/" + userId)
+        return profileAPI.getProfile(userId)
     }
 }
 
+
+export const profileAPI = {
+    getProfile(userId: number) {
+        return instance.get(`profile/` + userId)
+    },
+    getStatus(userId: number) {
+return instance.get(`status/` + userId)
+    },
+    updateStatus(status: any) {
+        return instance.put(`status`, {status: status})
+    },
+}
 
 
 export const authAPI = {
