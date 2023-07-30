@@ -1,5 +1,5 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import ProfileReducer, {addPostType, setUserProfileType, updateNewPostTextType} from "./profile-reducer";
+import ProfileReducer, {addPostType, setStatusType, setUserProfileType, updateNewPostTextType} from "./profile-reducer";
 import DialogsReducer, {addTextType, updateNewMessageTextType} from "./dialogs-reducer";
 import UsersReducer, {
     followType,
@@ -31,6 +31,7 @@ export type ActionDispatchTypes =
     | setUserProfileType
 | setUserDataType
 |toggleFollowingProgressType
+|setStatusType
 
 
 let RootReducer = combineReducers({
