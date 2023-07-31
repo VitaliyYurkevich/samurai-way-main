@@ -81,7 +81,7 @@ const initialState = {
     ],
     newPostText: '',
     profile: null,
-    status: ''
+    status: '',
 }
 
 export type profileType = {
