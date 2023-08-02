@@ -6,13 +6,17 @@ import ProfileStatus from "./ProfileStatus";
 
 type ProfileInfoPropsType = {
     profile: profileType
+    status: any
+    updateStatus: (status: any) => void
 }
 
 function ProfileInfo(props: ProfileInfoPropsType) {
 if(!props.profile){
     return <Preloader />
 }
+
     return (
+
         <div className={classes.content}>
            {/* <div>
                 <img
@@ -20,7 +24,7 @@ if(!props.profile){
             </div>*/}
             <div className={classes.descriptionBlock}>
                 <img src={props.profile.photos.large}/>
-                <ProfileStatus  />
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
             </div>
         </div>
     )
