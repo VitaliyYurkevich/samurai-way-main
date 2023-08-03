@@ -18,10 +18,10 @@ if(!props.profile){
     return (
 
         <div className={classes.content}>
-           {/* <div>
+            <div>
                 <img
                   src='https://img1.goodfon.ru/wallpaper/nbig/6/f2/priroda-kanada-gory-ozero-domik-zima-sneg.jpg'/>
-            </div>*/}
+            </div>
             <div className={classes.descriptionBlock}>
                 <img src={props.profile.photos.large}/>
                 <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
