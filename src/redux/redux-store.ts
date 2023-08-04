@@ -10,7 +10,7 @@ import UsersReducer, {
 } from "./users-reducer";
 import authReducer, {setUserDataType} from "./auth-reducer";
 import thunkMiddleware from "redux-thunk"
-
+import {reducer as formReducer} from "redux-form";
 
 
 /*type RootReducerType = typeof RootReducer
@@ -38,8 +38,8 @@ let RootReducer = combineReducers({
     profilePage: ProfileReducer,
     dialogsPage: DialogsReducer,
     usersPage: UsersReducer,
-    auth: authReducer
-
+    auth: authReducer,
+    form: formReducer
 })
 
 /*
