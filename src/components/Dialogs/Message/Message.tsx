@@ -9,7 +9,8 @@ type MessageType = {
 function Message(props: MessageType) {
     return (
         <div>
-        <div className={classes.message}>{props.message}
+        <div className={classes.message}>
+            {props.message}
         </div>
         </div>
     )
