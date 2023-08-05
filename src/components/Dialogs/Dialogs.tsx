@@ -17,7 +17,7 @@ import {Field, reduxForm} from "redux-form";
 
 export type DialogsPropsType = {
     dialogsPage: DialogsPageType
-    sendMessage: () => void
+    sendMessage: (values: string) => void
     updateNewMessageBody: (newMessageBody: string) => void
     isAuth: boolean
 }
@@ -32,11 +32,11 @@ function Dialogs(props: DialogsPropsType) {
             <Message message={m.message}/>
         )
     })
-    let onSendMessageClick = () => {
-        props.sendMessage()
-    }
+   // let onSendMessageClick = () => {
+    //    props.sendMessage()
+  //  }
     let addNewMessage = (values: any) => {
-        alert(values.newMessageBody)
+        props.sendMessage(values)
     }
     //if(!props.isAuth) return <Redirect to={'login'}/>
 
