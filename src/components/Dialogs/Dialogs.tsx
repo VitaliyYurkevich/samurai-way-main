@@ -18,7 +18,6 @@ import {Field, reduxForm} from "redux-form";
 export type DialogsPropsType = {
     dialogsPage: DialogsPageType
     sendMessage: (values: string) => void
-    updateNewMessageBody: (newMessageBody: string) => void
     isAuth: boolean
 }
 
