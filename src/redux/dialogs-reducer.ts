@@ -8,23 +8,17 @@ export const UPDATE_NEW_MESSAGE_BODY = "UPDATE-NEW-MESSAGE-BODY"
 
 export type  addTextType = {
     type: typeof SEND_MESSAGE
-}
-export type updateNewMessageTextType = {
-    type: typeof UPDATE_NEW_MESSAGE_BODY,
-    body: string
+    newMessageBody: string
 }
 
-export const sendMessageAC = () => {
+
+export const sendMessageAC = (newMessageBody: string) => {
     return {
-        type: SEND_MESSAGE
+        type: SEND_MESSAGE,
+        newMessageBody: newMessageBody
     } as const
 }
-export const updateNewMessageBodyAC = (body: string) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_BODY,
-        body: body
-    } as const
-}
+
 
 const initialState = {
     dialogs: [
@@ -43,7 +37,7 @@ const initialState = {
         {id: v1(), message: 'Whats up'},
         {id: v1(), message: 'Valera'},
     ],
-    newMessageBody: 'hello'
+    newMessageBody: '2'
 }
 
 export type DialogsPageType = typeof initialState
@@ -57,17 +51,13 @@ const DialogsReducer = (state: DialogsPageType = initialState, action: ActionDis
     }*/
 
     switch (action.type) {
-        case UPDATE_NEW_MESSAGE_BODY:
-            return {
-                ...state,
-                newMessageBody: action.body
-            }
+
 
         case SEND_MESSAGE:
+            let body = action.newMessageBody
             return{
                 ...state,
-                newMessageBody: '',
-                messages: [...state.messages, {id: v1(), message: state.newMessageBody}]
+                messages: [...state.messages, {id: v1(), message: body}]
         }
         default:
             return state
