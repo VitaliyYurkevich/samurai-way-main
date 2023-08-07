@@ -1,6 +1,5 @@
 import React from 'react';
 import {ActionDispatchTypes} from "./redux-store";
-import {v1} from "uuid";
 
 export const SEND_MESSAGE = "ADD-TEXT"
 export const UPDATE_NEW_MESSAGE_BODY = "UPDATE-NEW-MESSAGE-BODY"
@@ -22,20 +21,20 @@ export const sendMessageAC = (newMessageBody: string) => {
 
 const initialState = {
     dialogs: [
-        {id: v1(), name: 'Dimych'},
-        {id: v1(), name: 'Andrey'},
-        {id: v1(), name: 'Sveta'},
-        {id: v1(), name: 'Sasha'},
-        {id: v1(), name: 'Viktor'},
-        {id: v1(), name: 'Valera'},
+        {id: 1, name: 'Dimych'},
+        {id: 2, name: 'Andrey'},
+        {id: 3, name: 'Sveta'},
+        {id: 4, name: 'Sasha'},
+        {id: 5, name: 'Viktor'},
+        {id: 6, name: 'Valera'},
     ],
     messages: [
-        {id: v1(), message: 'Hi'},
-        {id: v1(), message: 'BlaBla'},
-        {id: v1(), message: 'Hello'},
-        {id: v1(), message: 'WTF'},
-        {id: v1(), message: 'Whats up'},
-        {id: v1(), message: 'Valera'},
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'BlaBla'},
+        {id: 3, message: 'Hello'},
+        {id: 4, message: 'WTF'},
+        {id: 5, message: 'Whats up'},
+        {id: 6, message: 'Valera'},
     ],
     newMessageBody: '2'
 }
@@ -57,7 +56,7 @@ const DialogsReducer = (state: DialogsPageType = initialState, action: ActionDis
             let body = action.newMessageBody
             return{
                 ...state,
-                messages: [...state.messages, {id: v1(), message: body}]
+                messages: [...state.messages, {id: 1, message: body}]
         }
         default:
             return state
