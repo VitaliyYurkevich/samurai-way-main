@@ -18,7 +18,6 @@ type AppPropsType = {
     store: AppStateType
     /*dispatch: (action:ActionDispatchTypes ) => void*/
 }
-console.log()
 const App = () => {
     /*const state = props.getState()*/
 
