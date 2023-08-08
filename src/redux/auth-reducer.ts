@@ -1,6 +1,7 @@
 import {ActionDispatchTypes} from "./redux-store";
 import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
+import {fchmod} from "fs";
 
 
 export const SET_USER_DATA = 'SET_USER_DATA'
@@ -41,22 +42,39 @@ const authReducer = (state:AuthPageType = initialState, action: ActionDispatchTy
 }
 
 
-export const setAuthUserDataAC = (userId: null, email: null, login: null) => {
+export const setAuthUserDataAC = (userId: null, email: null, login: null, isAuth: boolean) => {
     return {
         type: SET_USER_DATA,
-        data: {userId, email, login}
+        payload: {userId, email, login, isAuth}
     } as const
-
 }
 export const getAuthUserDataTC = () => (dispatch: Dispatch) =>  {
     authAPI.me()
         .then(response => {
             if(response.data.resultCode === 0) {
                 let {userId, email, login} = response.data
-               dispatch(setAuthUserDataAC(userId, email, login))
+               dispatch(setAuthUserDataAC(userId, email, login, true))
             }
         })
+}
 
+export const login = (email: string, password: string, rememberMe: boolean) => (dispatch: Dispatch) => {
+    authAPI.login(email, password, rememberMe)
+        .then(response => {
+            if(response.data.resultCode === 0) {
+               // @ts-ignore
+                dispatch(getAuthUserDataTC())
+            }
+        })
+}
+
+export const logout = () => (dispatch: Dispatch) => {
+    authAPI.logout()
+        .then(response => {
+            if(response.data.resultCode === 0) {
+                dispatch(setAuthUserDataAC(null, null, null, false))
+            }
+        })
 }
 
 export default authReducer
