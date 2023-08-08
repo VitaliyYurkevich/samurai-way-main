@@ -8,7 +8,7 @@ export const SET_USER_DATA = 'SET_USER_DATA'
 
 export type setUserDataType = {
     type: typeof SET_USER_DATA
-    data: {
+    payload: {
         userId: string,
         email: string,
         login: string,
@@ -33,8 +33,7 @@ const authReducer = (state:AuthPageType = initialState, action: ActionDispatchTy
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.data,
-                isAuth: true
+                ...action.payload,
             }
         default:
             return state
