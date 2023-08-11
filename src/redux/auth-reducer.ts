@@ -2,6 +2,7 @@ import {ActionDispatchTypes} from "./redux-store";
 import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
 import {fchmod} from "fs";
+import {stopSubmit} from "redux-form";
 
 
 export const SET_USER_DATA = 'SET_USER_DATA'
@@ -9,7 +10,7 @@ export const SET_USER_DATA = 'SET_USER_DATA'
 export type setUserDataType = {
     type: typeof SET_USER_DATA
     payload: {
-        userId: string,
+        userId: number,
         email: string,
         login: string,
         isAuth: boolean
@@ -47,7 +48,7 @@ export const setAuthUserDataAC = (userId: null, email: null, login: null, isAuth
         payload: {userId, email, login, isAuth}
     } as const
 }
-export const getAuthUserDataTC = () => (dispatch: Dispatch) =>  {
+export const getAuthUserData = () => (dispatch: Dispatch) =>  {
     authAPI.me()
         .then(response => {
             if(response.data.resultCode === 0) {
@@ -58,11 +59,17 @@ export const getAuthUserDataTC = () => (dispatch: Dispatch) =>  {
 }
 
 export const login = (email: string, password: string, rememberMe: boolean) => (dispatch: Dispatch) => {
+
+
+
     authAPI.login(email, password, rememberMe)
         .then(response => {
             if(response.data.resultCode === 0) {
-               // @ts-ignore
+                // @ts-ignore
                 dispatch(getAuthUserDataTC())
+            } else {
+            let message = response.data.message.length > 0 ? response.data.message[0] : "Some error"
+                dispatch(stopSubmit("login", {_error: message}))
             }
         })
 }
