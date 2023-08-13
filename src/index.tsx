@@ -15,7 +15,7 @@ import {Provider} from "react-redux";
     ReactDOM.render(
         <BrowserRouter>
             <Provider  store={store}>
-                <App getAuthUserData={store.getState} />
+                <App initializeApp={store.getState} getAuthUserData={store.getState} />
             </Provider>
 
         </BrowserRouter>, document.getElementById('root')
