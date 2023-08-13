@@ -16,6 +16,8 @@ import Login from "./components/Login/Login";
 import {connect} from "react-redux";
 import {getAuthUserData} from "./redux/auth-reducer";
 import {compose} from "redux";
+import {initializeApp} from "./redux/app-reducer";
+import Preloader from "./components/common/Preloader/Preloader";
 
 type AppPropsType = {
     store: AppStateType
@@ -24,15 +26,20 @@ type AppPropsType = {
 
 type MapDispatchPropsType = {
     getAuthUserData: () => void
+    initializeApp: () => void
 }
 
 class App extends React.Component<MapDispatchPropsType> {
     componentDidMount() {
-        this.props.getAuthUserData()
+        this.props.initializeApp()
     }
 
     render() {
         /*const state = props.getState()*/
+if(!this.props.initializeApp) {
+    return <Preloader/>
+}
+
 
         return (
             <BrowserRouter>
@@ -61,10 +68,16 @@ class App extends React.Component<MapDispatchPropsType> {
     }
 }
 
+/*const mapStateToProps = (state: AppStateType) => {
+    initialized: state.app.initialized
+}*/
+
 
  compose(
     withRouter, connect(null, {
-    getAuthUserData}))
+    getAuthUserData,
+    initializeApp
+    }))
 (App);
 
 export default App
