@@ -3,6 +3,7 @@ import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
 import {fchmod} from "fs";
 import {stopSubmit} from "redux-form";
+import {initializedSuccess} from "./app-reducer";
 
 
 export const SET_USER_DATA = 'SET_USER_DATA'
@@ -56,6 +57,7 @@ export const getAuthUserData = () => (dispatch: Dispatch) =>  {
                dispatch(setAuthUserDataAC(userId, email, login, true))
             }
         })
+
 }
 
 export const login = (email: string, password: string, rememberMe: boolean) => (dispatch: Dispatch) => {
