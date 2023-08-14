@@ -1,6 +1,6 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import ProfileReducer, {addPostType, setStatusType, setUserProfileType, updateNewPostTextType} from "./profile-reducer";
-import DialogsReducer, {addTextType, updateNewMessageTextType} from "./dialogs-reducer";
+import ProfileReducer, {addPostType, setStatusType, setUserProfileType} from "./profile-reducer";
+import DialogsReducer, {addTextType} from "./dialogs-reducer";
 import UsersReducer, {
     followType,
     setCurrentPageType, setIsFetchingType,
@@ -11,6 +11,7 @@ import UsersReducer, {
 import authReducer, {setUserDataType} from "./auth-reducer";
 import thunkMiddleware from "redux-thunk"
 import {reducer as formReducer} from "redux-form";
+import {appReducer, setInitializedType} from "./app-reducer";
 
 
 /*type RootReducerType = typeof RootReducer
@@ -20,8 +21,6 @@ export type AppType = ReturnType<RootReducerType>*/
 export type ActionDispatchTypes =
     addTextType
     | addPostType
-    | updateNewMessageTextType
-    | updateNewPostTextType
     | followType
     | unfollowType
     | setUsersType
@@ -29,9 +28,10 @@ export type ActionDispatchTypes =
     | setTotalUsersCountType
     | setIsFetchingType
     | setUserProfileType
-| setUserDataType
-|toggleFollowingProgressType
-|setStatusType
+    | setUserDataType
+    | toggleFollowingProgressType
+    | setStatusType
+    | setInitializedType
 
 
 let RootReducer = combineReducers({
@@ -39,7 +39,8 @@ let RootReducer = combineReducers({
     dialogsPage: DialogsReducer,
     usersPage: UsersReducer,
     auth: authReducer,
-    form: formReducer
+    form: formReducer,
+    app: appReducer
 })
 
 /*
