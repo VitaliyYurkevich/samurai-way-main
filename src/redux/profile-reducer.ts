@@ -6,7 +6,6 @@ import {Dispatch} from "redux";
 import {profileAPI, usersAPI} from "../api/api";
 
 export const ADD_POST = "ADD_POST"
-export const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT"
 export const SET_USER_PROFILE = "SET_USER_PROFILE"
 export const SET_STATUS = "SET_STATUS"
 
@@ -17,11 +16,7 @@ export type setUserProfileType = {
 
 export type addPostType = {
     type: typeof ADD_POST
-}
-
-export type updateNewPostTextType = {
-    type: typeof UPDATE_NEW_POST_TEXT,
-    newPost: string
+    newPostText: string
 }
 
 export type setStatusType = {
@@ -29,18 +24,13 @@ export type setStatusType = {
     status: any
 }
 
-export const addPostAC = () => {
+export const addPostAC = (newPostText: string) => {
     return {
         type: ADD_POST,
+        newPostText: newPostText
     } as const
 }
-export const updateNewPostTextAC = (newPost: string) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newPost: newPost
-    } as const
 
-}
 export const setUserProfileAC = (profile: string) => {
     return {
         type: SET_USER_PROFILE,
@@ -53,19 +43,19 @@ export const setStatusAC = (status: any) => {
         status: status
     } as const
 }
-export const getUserProfileTC = (userId: number) => (dispatch: Dispatch) => {
+export const getUserProfile = (userId: number) => (dispatch: Dispatch) => {
     usersAPI.getProfile(userId).then( response => {
             dispatch(setUserProfileAC(response.data))
         }
     )
 }
-export const getStatusTC = (userId: number) => (dispatch: Dispatch) => {
+export const getStatus = (userId: number) => (dispatch: Dispatch) => {
     profileAPI.getStatus(userId).then( response => {
         dispatch(setStatusAC(response.data))
     }
     )
 }
-export const updateStatusTC = (status: any) => (dispatch: Dispatch) => {
+export const updateStatus = (status: any) => (dispatch: Dispatch) => {
     profileAPI.updateStatus(status).then( response => {
         if (response.data.resultCode === 0) {
             dispatch(setStatusAC(response.data))
@@ -79,7 +69,7 @@ const initialState = {
     posts: [
         {id: 1, message: 'Hi, how are you?', likesCount: 2}
     ],
-    newPostText: '',
+
     profile: null,
     status: '',
 }
@@ -101,15 +91,9 @@ const ProfileReducer = (state: ProfilePageType = initialState, action: ActionDis
         case ADD_POST: {
             return {
                 ...state,
-                newPostText: '',
-                posts: [...state.posts, {id: 1, message: state.newPostText, likesCount: 0}]
+                posts: [...state.posts, {id: 2, message: action.newPostText, likesCount: 0}]
             }
         }
-        case UPDATE_NEW_POST_TEXT:
-            return {
-                ...state,
-                newPostText: action.newPost
-            }
         case SET_STATUS:
             return {
                 ...state,
