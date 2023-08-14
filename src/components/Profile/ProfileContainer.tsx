@@ -3,12 +3,11 @@ import Profile from "./Profile";
 import axios from "axios";
 import {connect} from "react-redux";
 import {
-    getStatusTC,
-    getUserProfileTC,
+    getStatus, getUserProfile,
+
     ProfilePageType,
-    setUserProfileAC,
-    updateNewPostTextAC,
-    updateStatusTC
+    setUserProfileAC, updateStatus,
+
 } from "../../redux/profile-reducer";
 import {AppStateType} from "../../redux/redux-store";
 import {UsersPageType} from "../../redux/users-reducer";
@@ -25,6 +24,8 @@ type PathParamsType = {
 type MapStatePropsType = {
     profile: any
     status: string
+    authorizedUserId: number | null | undefined
+    isAuth?: boolean
 }
 
 type MapStateToPropsForRedirectType = {
@@ -32,13 +33,12 @@ type MapStateToPropsForRedirectType = {
 }
 
 type MapDispatchPropsType = {
-    getUserProfileTC: (userId: number) => void
-    getStatusTC: (userId: number) => void
-    updateStatusTC: (status: any) => void
+    getUserProfile: (userId: number) => void
+    getStatus: (userId: number) => number
+    updateStatus: (status: any) => void
 }
 
 type OwnPropsType = MapStatePropsType & MapDispatchPropsType & MapStateToPropsForRedirectType
-
 
 
 // @ts-ignore
@@ -49,13 +49,15 @@ class ProfileContainerComponent extends React.Component<PropsType> {
     componentDidMount() {
         let userId = this.props.match.params.userId
         if (!userId) {
-            userId = 2
+
+            userId = this.props.authorizedUserId as number
+           // if(!userId) {
+              //  this.props.history.push("/login")
+            //}
         }
 
-        this.props.getUserProfileTC(userId)
-setTimeout(()=>{
-    this.props.getStatusTC(userId)
-}, 1000)
+        this.props.getUserProfile(userId)
+        this.props.getStatus(userId)
 
     }
 
@@ -67,7 +69,7 @@ setTimeout(()=>{
                     {...this.props}
                     profile={this.props.profile}
                     status={this.props.status}
-                    updateStatus={this.props.updateStatusTC}
+                    updateStatus={this.props.updateStatus}
                 />
             </div>
         )
@@ -77,16 +79,17 @@ setTimeout(()=>{
 let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         profile: state.profilePage.profile,
-        status: state.profilePage.status
-
+        status: state.profilePage.status,
+        authorizedUserId: state.auth["userId"],
+        isAuth: state.auth["isAuth"]
     }
 }
 
 export default compose<React.ComponentType>(
     connect(mapStateToProps, {
-        getUserProfileTC: getUserProfileTC,
-        getStatus: getStatusTC,
-        updateStatus: updateStatusTC
+        getUserProfile: getUserProfile,
+        getStatus: getStatus,
+        updateStatus: updateStatus
     }),
     withRouter,
     withAuthRedirect,
