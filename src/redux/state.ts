@@ -1,5 +1,5 @@
-import ProfileReducer, {addPostAC, updateNewPostTextAC} from "./profile-reducer";
-import DialogsReducer, {sendMessageAC, updateNewMessageBodyAC} from "./dialogs-reducer";
+import ProfileReducer, {addPostAC} from "./profile-reducer";
+import DialogsReducer, {sendMessageAC} from "./dialogs-reducer";
 
 /*export let store: StorePropsType = {
     _state: {
@@ -86,10 +86,7 @@ import DialogsReducer, {sendMessageAC, updateNewMessageBodyAC} from "./dialogs-r
     updateNewPostText: (newText: string) => void
     subscribe: (observer: () => void) => void
     getState: () => statePropsType
-    dispatch: (action: ReturnType<typeof addPostAC> |
-        ReturnType<typeof updateNewPostTextAC> |
-        ReturnType<typeof updateNewMessageBodyAC> |
-        ReturnType<typeof sendMessageAC>
+    dispatch: (action: ReturnType<typeof addPostAC> | ReturnType<typeof sendMessageAC>
     ) => void
 
 }
