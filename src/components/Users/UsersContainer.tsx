@@ -12,9 +12,17 @@ import {
 import axios from "axios";
 import Users from "./Users";
 import preloader from "../../assets/preloader.svg"
-import Preloader from "../common/Preloader";
+import Preloader from "../common/Preloader/Preloader";
 import {usersAPI} from "../../api/api";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {
+    getCurrentPage,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers
+} from "../../redux/users-selectors";
 
 export type mapStateToPropsType = {
     usersPage: UsersPageType
@@ -82,11 +90,11 @@ this.props.getUsers(this.props.usersPage.currentPage, this.props.usersPage.pageS
 let mapStateToProps = (state: AppStateType) => {
     return {
         usersPage: state.usersPage,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress,
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state),
         //getUserThunkCreator:
     }
 
