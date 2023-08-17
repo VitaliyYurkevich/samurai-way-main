@@ -163,6 +163,7 @@ const UsersReducer = (state: UsersPageType = initialState, action: ActionDispatc
 export const getUserThunkCreator = (currentPage: number, pageSize: number) => {
     return (dispatch: Dispatch) => {
         toggleIsFetchingAC(true)
+        dispatch(setCurrentPageAC(currentPage))
         usersAPI.getUsers(currentPage, pageSize)
             .then(data => {
                 dispatch(toggleIsFetchingAC(false))
