@@ -4,6 +4,7 @@ import {ProfilePageType, profileType} from "../../../redux/profile-reducer";
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
+console.log('')
 
 type ProfileInfoPropsType = {
     profile: profileType
