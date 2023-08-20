@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {log} from "util";
 
-console.log('')
+
 export const ProfileStatusWithHooks = (props: any) => {
 
     let stateWithSetState = useState(false)
