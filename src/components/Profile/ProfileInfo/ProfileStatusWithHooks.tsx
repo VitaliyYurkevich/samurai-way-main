@@ -4,17 +4,18 @@ import {log} from "util";
 
 export const ProfileStatusWithHooks = (props: any) => {
 
-    let stateWithSetState = useState(false)
-    let editMode = stateWithSetState[0]
-    let setEditMode = stateWithSetState[1]
+    let [editMode, setEditMode] = useState(false)
+const activateMode = () => {
+        setEditMode(true)
+}
 
     return (
         <div>
             {
                 !editMode &&
                 <div>
-                    <span onDoubleClick={() => {
-                    }}>{props.status || '------'}</span>
+                    <span onDoubleClick={activateMode}>
+                        {props.status || '------'}</span>
                 </div>
             }
             {
