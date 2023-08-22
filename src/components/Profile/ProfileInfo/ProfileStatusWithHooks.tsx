@@ -5,6 +5,7 @@ import {log} from "util";
 export const ProfileStatusWithHooks = (props: any) => {
 
     let [editMode, setEditMode] = useState(false)
+    let [status, setStatus] = useState(props.status)
     const activateMode = () => {
         setEditMode(true)
     }
