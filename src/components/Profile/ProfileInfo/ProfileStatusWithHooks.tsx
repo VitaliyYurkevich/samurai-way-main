@@ -25,8 +25,9 @@ return (
             editMode &&
             <div>
                 <input onChange={() => {
-                }} onBlur={() => {
                 }}
+                       autoFocus={true}
+                       onBlur={deactivateEditMode}
                        value={''}/>
             </div>
         }
