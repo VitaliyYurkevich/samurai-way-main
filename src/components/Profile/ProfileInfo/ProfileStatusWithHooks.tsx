@@ -3,7 +3,7 @@ import {log} from "util";
 
 
 export const ProfileStatusWithHooks = (props: any) => {
-
+    console.log('')
     let [editMode, setEditMode] = useState(false)
     let [status, setStatus] = useState(props.status)
 
