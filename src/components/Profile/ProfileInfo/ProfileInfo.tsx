@@ -17,7 +17,7 @@ if(!props.profile){
     return <Preloader />
 }
     console.log('')
-    console.log()
+
     return (
 
         <div className={classes.content}>
