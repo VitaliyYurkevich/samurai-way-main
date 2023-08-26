@@ -16,7 +16,7 @@ function ProfileInfo(props: ProfileInfoPropsType) {
 if(!props.profile){
     return <Preloader />
 }
-    console.log('')
+
 
     return (
 
