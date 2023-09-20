@@ -12,6 +12,7 @@ export const ProfileStatusWithHooks = (props: any) => {
     }, [props.status])
 
     const activateMode = () => {
+        debugger
         setEditMode(true)
     }
     const deactivateEditMode = () => {
